@@ -35,7 +35,6 @@
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 120px; 
- 
 }
 
 .top-right-title {
@@ -66,11 +65,10 @@
   line-height: 1.6;
   margin-top: 25px;
   text-align: justify;
-  max-width: 50%;           /* يمنع النص من التمدد */
-  margin-left: auto;        /* محاذاة وسطية */
+  max-width: 50%;
+  margin-left: auto;
   margin-right: auto;
 }
-
 
 .center-title {
   position: absolute;
@@ -78,6 +76,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  animation: fadeInZoom 1s ease;
 }
 
 .center-title h1 {
@@ -85,4 +84,16 @@
   font-size: 45px;
   font-weight: 500;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+/* ✅ الحركة الجديدة */
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+  }
 }
