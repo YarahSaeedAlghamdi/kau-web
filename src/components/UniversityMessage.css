@@ -63,11 +63,11 @@
 .content {
   font-size: 18px;
   line-height: 1.6;
-  margin-top: 25px;
+  margin-top: 30px;
   text-align: justify;
   max-width: 50%;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 20px;;
 }
 
 .center-title {
