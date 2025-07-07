@@ -1,0 +1,115 @@
+.news-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.news-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Tabs rendered as pills */
+.news-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.news-tabs button {
+  background: #f1f2f4;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.news-tabs button:hover {
+  background: #e2e4e7;
+}
+.news-tabs button.active {
+  background: #ccc;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Cards grid */
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Individual card */
+.card {
+  position: relative;
+  width: 32%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Date badge */
+.date-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+}
+.date-badge .day {
+  font-size: 2rem;
+  line-height: 1;
+}
+.date-badge .month,
+.date-badge .year {
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+/* Title overlay */
+.card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+/* “All news” link */
+.all-news {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  color: #009dc7;
+  text-decoration: none;
+  font-weight: 500;
+}
+.all-news .arrow {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #009dc7;
+  color: #fff;
+  text-align: center;
+  line-height: 28px;
+}
+.all-news:hover .arrow {
+  background: #007aa3;
+}
