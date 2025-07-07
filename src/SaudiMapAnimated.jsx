@@ -7,7 +7,7 @@ export default function SaudiMapAnimated() {
         className="w-[90%] animate-draw"
         fill="none"
         stroke="#00b300"
-        strokeWidth="2"
+        strokeWidth="1"
       >
         <path
           className="path"
@@ -23,6 +23,7 @@ export default function SaudiMapAnimated() {
             M 700 700 L 350 200
             M 1000 200 L 300 600
           "
+          transform=" rotate(30, 0, 0)"
         />
       </svg>
     </div>
