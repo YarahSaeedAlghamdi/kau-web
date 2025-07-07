@@ -10,13 +10,12 @@ const Footer = () => {
           <h3>اشترك في نشرتنا البريدية</h3>
           <input type="email" placeholder="أدخل بريدك الإلكتروني" />
           <div className="social-icons">
+            
             <i className="bi bi-instagram" />
             <i className="bi bi-linkedin" />
             <i className="bi bi-snapchat" />
-            <i className="bi bi-apple" />
-            <i className="bi bi-x" />
+<i className="bi bi-twitter-x"></i>
           </div>
-          <p className="contact-us">تواصل معنا</p>
         </div>
 
         {/* روابط */}
