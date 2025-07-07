@@ -4,6 +4,8 @@ import './App.css'
 import NewsSection from './components/NewsSection'
 import SaudiMapAnimated from "./SaudiMapAnimated";
 import Achievements from './components/Achievements';
+import Footer from "./components/Footer";
+
 function App() {
   return (
     <div className="App">
@@ -11,6 +13,7 @@ function App() {
       <SaudiMapAnimated />
       <Achievements />
       <NewsSection />
+      <Footer />
     </div>
   )
 
