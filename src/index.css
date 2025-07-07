@@ -70,11 +70,11 @@ button:focus-visible {
 /**/
 @keyframes drawLine {
   from {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
+    stroke-dasharray: 3000;
+    stroke-dashoffset: 3000;
   }
   to {
-    stroke-dasharray: 1000;
+    stroke-dasharray: 3000;
     stroke-dashoffset: 0;
   }
 }

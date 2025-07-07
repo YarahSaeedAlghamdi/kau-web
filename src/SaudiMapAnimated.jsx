@@ -23,7 +23,7 @@ export default function SaudiMapAnimated() {
             M 700 700 L 350 200
             M 1000 200 L 300 600
           "
-          transform=" rotate(30, 0, 0)"
+         // transform=" rotate(30, 0, 0)"
         />
       </svg>
     </div>
