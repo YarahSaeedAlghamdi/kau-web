@@ -4,6 +4,7 @@ import './App.css'
 import NewsSection from './components/NewsSection'
 import SaudiMapAnimated from "./SaudiMapAnimated";
 import Achievements from './components/Achievements';
+import Partnerships from './components/Partnerships';
 import Footer from "./components/Footer";
 import UniversityMessage from "./components/UniversityMessage";
 
@@ -15,6 +16,7 @@ function App() {
       <UniversityMessage />
       <SaudiMapAnimated />
       <Achievements />
+      <Partnerships />
       <NewsSection />
       <Footer />
     </div>
