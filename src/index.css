@@ -67,18 +67,3 @@ button:focus-visible {
   }
 }
 
-/**/
-@keyframes drawLine {
-  from {
-    stroke-dasharray: 3000;
-    stroke-dashoffset: 3000;
-  }
-  to {
-    stroke-dasharray: 3000;
-    stroke-dashoffset: 0;
-  }
-}
-
-.animate-draw path {
-  animation: drawLine 4s ease forwards;
-}

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './AccessibilityTool.css';
 
-import '@fontsource/cairo';
-import '@fontsource/tajawal';
-import '@fontsource/opendyslexic';
+
 
 const AccessibilityTool = () => {
   const [showFeatures, setShowFeatures] = useState(false);
