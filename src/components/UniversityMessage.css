@@ -1,6 +1,6 @@
 .university-message {
   display: flex;
-  height: 100vh;
+  height: 65vh;
   overflow: hidden;
   direction: rtl;
   font-family: 'Cairo', sans-serif;
@@ -30,7 +30,7 @@
   flex: 3;
 }
 
-.overlay {
+.uniMsg-overlay {
   background-color: rgba(0, 0, 0, 0.4); /* رجعنا الخلفية القديمة بدون blur */
   color: white;
   height: 100%;
@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 120px;
+  padding-top: 60px;
 }
 
 .top-right-title {
@@ -72,7 +72,7 @@
 .content {
   font-size: 17px;
   line-height: 2;
-  margin-top: 100px;
+  margin-top: 150px;
   text-align: justify;
   max-width: 70%;
   margin-left: auto;
@@ -127,20 +127,3 @@
     transform: translateY(0);
   }
 }
-/**/
-body.hide-images .column {
-  background-image: none !important;
-}
-/**/
-
-
-/**/
-.sr-only {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-/**/

@@ -10,6 +10,7 @@ import UniversityMessage from "./components/UniversityMessage";
 import App0 from './Tool_Main';
 import NavBar from "./components/NavBar";
 import KAUContacts from "./components/KAUContacts"; 
+import Home from './components/Home';
 
 
 
@@ -20,8 +21,10 @@ function App() {
       
       <App0/>
       <NavBar />
-      <UniversityMessage />
+      <Home />
+      
       <StatisticsAndNumbers />
+      <UniversityMessage />
       <Achievements />
       <Partnerships />
       <NewsSection />
