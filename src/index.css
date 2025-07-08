@@ -1,5 +1,4 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -23,32 +22,67 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-size: 100%;
+  font-family: unset;
 }
 
+/* ✅ وراثة نوع الخط فقط */
+body.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
+  font-family: inherit !important;
+}
+
+/* ✅ وراثة الحجم فقط عند تفعيل الحجم */
+body.font-100.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
+  font-size: inherit !important;
+}
+body.font-150.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
+  font-size: inherit !important;
+}
+body.font-200.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
+  font-size: inherit !important;
+}
+
+/* ✅ كلاس الحجم */
+body.font-100.apply-accessibility {
+  font-size: 100% !important;
+}
+body.font-150.apply-accessibility {
+  font-size: 150% !important;
+}
+body.font-200.apply-accessibility {
+  font-size: 200% !important;
+}
+
+/* ✅ كلاس نوع الخط */
+body.font-cairo.apply-accessibility {
+  font-family: 'Cairo', sans-serif !important;
+}
+body.font-tajawal.apply-accessibility {
+  font-family: 'Tajawal', sans-serif !important;
+}
+body.font-dyslexic.apply-accessibility {
+  font-family: 'OpenDyslexic', sans-serif !important;
+}
+
+/* ✅ العناوين */
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
   line-height: 1.1;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+h2 {
+  font-size: 1.75em;
+}
+h3 {
+  font-size: 1.5em;
+}
+p,
+li,
+span,
+label {
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* ✅ تفاعل الألوان */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -62,7 +96,7 @@ button:focus-visible {
   }
 }
 
-/**/
+/* ✅ أنيميشن */
 @keyframes drawLine {
   from {
     stroke-dasharray: 3000;
@@ -73,70 +107,6 @@ button:focus-visible {
     stroke-dashoffset: 0;
   }
 }
-
 .animate-draw path {
   animation: drawLine 4s ease forwards;
-}
-/* تطبيق الخط والحجم على كل العناصر داخل #app-root */
-#app-root {
-  font-family: inherit;
-  font-size: inherit;
-}
-
-/* حجم الخط بحسب الكلاسات المضافة من أداة الوصول */
-#app-root.font-100 {
-  font-size: 100%;
-}
-
-#app-root.font-150 {
-  font-size: 150%;
-}
-
-#app-root.font-200 {
-  font-size: 200%;
-}
-
-/* نوع الخط بحسب الكلاسات */
-#app-root.font-cairo {
-  font-family: 'Cairo', sans-serif;
-}
-
-#app-root.font-tajawal {
-  font-family: 'Tajawal', sans-serif;
-}
-
-#app-root.font-dyslexic {
-  font-family: 'OpenDyslexic', sans-serif;
-}
-/* هذه القاعدة تجعل كل العناصر داخل app-root تتبع حجم الخط ونوع الخط */
-#app-root,
-#app-root * {
-  font-size: inherit !important;
-  font-family: inherit !important;
-}
-
-/* تعريف مستويات حجم الخط */
-#app-root.font-100 {
-  font-size: 100%;
-}
-
-#app-root.font-150 {
-  font-size: 150%;
-}
-
-#app-root.font-200 {
-  font-size: 200%;
-}
-
-/* أنواع الخطوط */
-#app-root.font-cairo {
-  font-family: 'Cairo', sans-serif;
-}
-
-#app-root.font-tajawal {
-  font-family: 'Tajawal', sans-serif;
-}
-
-#app-root.font-dyslexic {
-  font-family: 'OpenDyslexic', sans-serif;
 }
