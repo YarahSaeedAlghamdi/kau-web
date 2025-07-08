@@ -42,13 +42,13 @@
   font-weight: bold;
   fill: black !important;
   stroke: none;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 .stats-label {
   font-size: 14px;
   fill: black !important;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 .stats-connector {
@@ -72,12 +72,13 @@
 .stats-title {
   font-weight: bold;
   fill: black !important;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 18px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 20px;
   stroke: none;
 }
 
 .stats-slider {
+  font-family: 'Cairo', sans-serif;
   transition: transform 0.6s ease-in-out;
   will-change: transform;
 }
