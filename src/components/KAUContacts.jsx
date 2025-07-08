@@ -4,7 +4,9 @@ import "./KAUContacts.css";
 const KAUContacts = () => {
   return (
     <footer className="kau-social">
-      <div className="follow-text">تابع جامعة الملك عبدالعزيز عبر التطبيقات</div>
+      <div className="gallery-title">ابقى على تواصل </div>
+
+
       <div className="social-buttons">
         <button>instagram</button>
         <button>x</button>
@@ -12,61 +14,102 @@ const KAUContacts = () => {
         <button>MyKau</button>
         <button>SnapChat</button>
       </div>
-      <div className="posters-grid">
-        {/* بوستر 1: ضع الرابط داخل href و رابط الصورة داخل src */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div className="ads-grid">
+        {/* إعلان 1 - سناب شات */}
         <a
-          href="https://x.com/kauedu_sa?lang=arhttps://x.com/kauedu_sa?lang=ar"  /* هنا حط رابط الصفحة */
+          href="https://www.snapchat.com/add/kauedu_sa"
           target="_blank"
           rel="noopener noreferrer"
-          className="poster-item"
+          className="ad-item"
         >
-          <img
-            src="https://x.com/kauedu_sa/status/1730166399115333948https://cic.kau.edu.sa/Pages-Attracting-students.aspx" /* هنا حط رابط الصورة */
-            alt="بوستر 1"
-            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "0.375rem" }}
-          />
+          <div className="image-container">
+            <img
+              src="https://story.snapchat.com/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYYWRpanBvdG5jAYhMxlDOAYhMxjv1AAAAAQ/preview/square.jpeg"
+              alt="KAU Snapchat"
+              className="poster-image"
+            />
+            <img
+              src="https://png.pngtree.com/element_our/sm/20180626/sm_5b321c9cb2d25.jpg"
+              alt="Snapchat Icon"
+              className="icon-overlay"
+            />
+          </div>
         </a>
 
-        {/* بوستر 2 */}
+        {/* إعلان 2 - LinkedIn */}
         <a
-          href="https://example.com/بوستر2" /* رابط البوستر 2 */
+          href="https://www.linkedin.com/school/king-abdulaziz-university/"
           target="_blank"
           rel="noopener noreferrer"
-          className="poster-item"
+          className="ad-item"
         >
-          <img
-            src="https://via.placeholder.com/150x128?text=بوستر+2" /* رابط صورة البوستر 2 */
-            alt="بوستر 2"
-            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "0.375rem" }}
-          />
+          <div className="image-container">
+            <img
+              src="https://cmsplus.kau.edu.sa/Images/305/web2025/%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA/%D8%A7%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A2.jpg"
+              alt="KAU LinkedIn"
+              className="poster-image"
+            />
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+              alt="LinkedIn Icon"
+              className="icon-overlay"
+            />
+          </div>
         </a>
 
-        {/* بوستر 3 */}
+        {/* إعلان 3 - Instagram */}
         <a
-          href="https://example.com/بوستر3" /* رابط البوستر 3 */
+          href="https://www.instagram.com/kauedu_sa/"
           target="_blank"
           rel="noopener noreferrer"
-          className="poster-item"
+          className="ad-item"
         >
-          <img
-            src="https://via.placeholder.com/150x128?text=بوستر+3" /* رابط صورة البوستر 3 */
-            alt="بوستر 3"
-            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "0.375rem" }}
-          />
+          <div className="image-container">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT33psIr15KQ-1O-UUDG_ujytHL12TF6F8UNUH3fgjobSn9516faDRDnhF8kTKAR7pab2s&usqp=CAU"
+              alt="KAU Instagram"
+              className="poster-image"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png"
+              alt="Instagram Icon"
+              className="icon-overlay"
+            />
+          </div>
         </a>
 
-        {/* بوستر 4 */}
+        {/* إعلان 4 - X */}
         <a
-          href="https://example.com/بوستر4" /* رابط البوستر 4 */
+          href="https://x.com/kauedu_sa"
           target="_blank"
           rel="noopener noreferrer"
-          className="poster-item"
+          className="ad-item"
         >
-          <img
-            src="https://via.placeholder.com/150x128?text=بوستر+4" /* رابط صورة البوستر 4 */
-            alt="بوستر 4"
-            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "0.375rem" }}
-          />
+          <div className="image-container">
+            <img
+              src="https://www.al-madina.com/uploads/images/2024/08/04/2329772.jpg"
+              alt="KAU X"
+              className="poster-image"
+            />
+            <img
+              src="https://pngimg.com/uploads/x_logo/small/x_logo_PNG3.png"
+              alt="X Icon"
+              className="icon-overlay"
+            />
+          </div>
         </a>
       </div>
     </footer>
