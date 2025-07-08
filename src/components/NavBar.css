@@ -1,0 +1,83 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 12px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+  direction: rtl;
+}
+
+.navbar.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  direction: rtl; /* تأكد إنها RTL عشان الترتيب يمين لليسار */
+  margin-left: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 60px; /* ✅ تباعد بين الأيقونات والروابط */
+}
+
+/* شعار */
+.logo-img {
+  height: 60px;
+}
+
+/* روابط النص */
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a.dark {
+  color: black;
+}
+
+
+
+.icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.icon-img.small {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* نص اللغة */
+.lang-text {
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.lang-text.dark {
+  color: black;
+}
