@@ -1,0 +1,166 @@
+/* General Layout */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  direction: rtl;
+}
+.font-cairo {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+.font-tajawal {
+  font-family: 'Tajawal', sans-serif !important;
+}
+
+.font-dyslexic {
+  font-family: 'OpenDyslexic', sans-serif !important;
+}
+
+.app {
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+  text-align: center;
+}
+
+.content {
+  margin-top: 2rem;
+}
+
+
+/* Highlighting */
+
+
+.highlighted-links a,
+.highlighted-links button {
+  outline: 3px dashed #ff0;
+  background-color: #333;
+  color: #fff;
+}
+
+
+
+/* Font Resizing */
+.font-100 { font-size: 100% !important; }
+.font-150 { font-size: 150% !important; }
+.font-200 { font-size: 200% !important; font-weight: bold; color: #111; }
+
+/* Contrast Modes */
+.contrast-high {
+  background-color: #000 !important;
+  color: #FFD700 !important;
+}
+
+.contrast-low {
+  background-color: #dcdcdc !important;
+  color: #222 !important;
+}
+
+/* Grayscale */
+.accessibility-wrapper.grayscale {
+  filter: grayscale(100%);
+}
+
+/* Floating Accessibility Widget */
+.accessibility-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+}
+
+/* Main Circular Button */
+.main-icon {
+  background-color: #007A3D;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.main-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Features Panel */
+.accessibility-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.features-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  min-width: 240px;
+}
+
+/* Feature Button */
+.feature-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Panel Buttons */
+.settings-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.option-button {
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+/**
+.green-btn {
+  background-color: #00C781;
+  color: white;
+}
+**/
+.gray-btn {
+  background-color: #7D7D7D;
+  color: white;
+}
+/**
+.black-btn {
+  background-color: #000;
+  color: yellow;
+}
+**/
+
+.font-cairo {
+  font-family: 'Cairo', sans-serif !important;
+}
+.font-tajawal {
+  font-family: 'Tajawal', sans-serif !important;
+}
+.font-dyslexic {
+  font-family: 'OpenDyslexic', sans-serif !important;
+}

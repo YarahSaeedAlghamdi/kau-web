@@ -28,35 +28,35 @@ export default function Partnerships() {
   );
 }  */
 
-  /*
+/*
 import React from "react";
 import "./Partnerships.css";
 
 export default function Partnerships() {
-  const items = [
-    "التعاون الدولي",
-    "الإعتمادات الأكاديمية",
-    "المسؤولية المجتمعية"
-  ];
+const items = [
+  "التعاون الدولي",
+  "الإعتمادات الأكاديمية",
+  "المسؤولية المجتمعية"
+];
 
-  return (
-    <section className="partnerships">
-      <h2>الشراكات</h2>
-      
-      <img 
-  src="https://th.bing.com/th/id/OIP.2iYPw4mQXpCvtvb2CnsaZQHaDt?w=295&h=175&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3.jpeg" 
-  alt="شعار" 
-  className="logo" 
+return (
+  <section className="partnerships">
+    <h2>الشراكات</h2>
+    
+    <img 
+src="https://th.bing.com/th/id/OIP.2iYPw4mQXpCvtvb2CnsaZQHaDt?w=295&h=175&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3.jpeg" 
+alt="شعار" 
+className="logo" 
 />
-      <div className="list">
-        {items.map((item, i) => (
-          <div className="partnership-item" style={{ "--i": i }} key={i}>
-            <span>›</span> {item}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+    <div className="list">
+      {items.map((item, i) => (
+        <div className="partnership-item" style={{ "--i": i }} key={i}>
+          <span>›</span> {item}
+        </div>
+      ))}
+    </div>
+  </section>
+);
 }*/
 /*
 import React from "react";
@@ -95,10 +95,10 @@ export default function Partnerships() {
     <section className="partnerships">
       <h2>الشراكات</h2>
       <div className="partnerships-box">
-        <div className="partnership-item">› التعاون الدولي</div>
-        <div className="partnership-item">› الإعتمادات الأكاديمية</div>
-        <div className="partnership-item">› المسؤولية المجتمعية</div>
+        <a href="#" className="partnership-item">› التعاون الدولي</a>
+        <a href="#" className="partnership-item">› الإعتمادات الأكاديمية</a>
+        <a href="#" className="partnership-item">› المسؤولية المجتمعية</a>
       </div>
     </section>
-  );
+  );
 }

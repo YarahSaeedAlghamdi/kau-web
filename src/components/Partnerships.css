@@ -156,7 +156,13 @@
   transition: 0.3s;
   cursor: pointer;
 }
-
+/**/
+.partnership-item {
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+/**/
 .partnership-item:last-child {
   border-bottom: none;
 }
