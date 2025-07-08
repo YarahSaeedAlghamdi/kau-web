@@ -90,7 +90,7 @@ export default function Partnerships() {
 import React from "react";
 import "./Partnerships.css";
 
-export default function Partnerships() {
+export default function Partners() {
   return (
     <section className="partnerships">
       <h2>الشراكات</h2>
