@@ -1,43 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import './AccessibilityTool.css';
+import icon from '../assets/accessibility.svg';
+import audioIcon from '../assets/font-adjustment.png';
+import textIcon from '../assets/speaker-filled-audio-tool.png';
+import visionIcon from '../assets/target.png';
+import autismIcon from '../assets/view.png';
+import mobilityIcon from '../assets/disability.png';
+import dyslexiaIcon from '../assets/dyslexia.png';
+import adhdIcon from '../assets/distraction.png';
+import epilepsyIcon from '../assets/epilepsy.png';
 
-
-
-const AccessibilityTool = () => {
-  const [showFeatures, setShowFeatures] = useState(false);
-  const [activePanel, setActivePanel] = useState(null);
-  const [fontClass, setFontClass] = useState('font-100');
+const AccessibilityTools = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [flippedCard, setFlippedCard] = useState(null);
   const [fontFamilyClass, setFontFamilyClass] = useState('font-cairo');
+  const [fontSizeClass, setFontSizeClass] = useState('font-100');
   const [contrastClass, setContrastClass] = useState('');
   const [isGrayscale, setIsGrayscale] = useState(false);
   const [cursorLarge, setCursorLarge] = useState(false);
   const [highlightLinks, setHighlightLinks] = useState(false);
   const [hideImages, setHideImages] = useState(false);
-  const [voiceActive, setVoiceActive] = useState(false); // 🗣️ حالة الأوامر الصوتية
 
-  // 🔱 Cursor effect
-  useEffect(() => {
-    document.body.style.cursor = cursorLarge ? 'url("/cursor-large.cur"), auto' : 'auto';
-  }, [cursorLarge]);
-
-  // 🔗 Highlight links & buttons
-  useEffect(() => {
-    document.body.classList.toggle('highlighted-links', highlightLinks);
-  }, [highlightLinks]);
-
-  // 🔠 Font size
-  useEffect(() => {
-    document.body.classList.remove('font-100', 'font-150', 'font-200');
-    document.body.classList.add(fontClass);
-  }, [fontClass]);
-
-  // ✍️ Font family
   useEffect(() => {
     document.body.classList.remove('font-cairo', 'font-tajawal', 'font-dyslexic');
     document.body.classList.add(fontFamilyClass);
   }, [fontFamilyClass]);
 
-  // 🎨 Contrast
+  useEffect(() => {
+    document.body.classList.remove('font-100', 'font-150', 'font-200');
+    document.body.classList.add(fontSizeClass);
+  }, [fontSizeClass]);
+
   useEffect(() => {
     document.body.classList.remove('contrast-high', 'contrast-low');
     if (contrastClass) {
@@ -45,103 +38,44 @@ const AccessibilityTool = () => {
     }
   }, [contrastClass]);
 
-  // 🌑 Grayscale
   useEffect(() => {
-    if (isGrayscale) {
-      document.body.classList.add('grayscale');
-    } else {
-      document.body.classList.remove('grayscale');
-    }
+    document.body.classList.toggle('grayscale', isGrayscale);
   }, [isGrayscale]);
 
-  // 🖼️ Hide/Show Images
   useEffect(() => {
-    document.body.classList.toggle('hide-images', hideImages);
+    document.body.style.cursor = cursorLarge ? 'url("/cursor-large.cur"), auto' : 'auto';
+  }, [cursorLarge]);
+
+  useEffect(() => {
+    document.body.classList.toggle('highlighted-links', highlightLinks);
+  }, [highlightLinks]);
+
+  useEffect(() => {
     document.querySelectorAll('img').forEach(img => {
       img.style.display = hideImages ? 'none' : '';
     });
   }, [hideImages]);
 
-  // 🗣️ Voice Commands
-  useEffect(() => {
-    if (!voiceActive) return;
+  const toggleFlip = (cardId) => {
+    setFlippedCard(prev => (prev === cardId ? null : cardId));
+  };
 
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-      alert('❌ المتصفح لا يدعم التعرف على الصوت');
-      return;
-    }
-
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'ar-SA';
-    recognition.continuous = true;
-    recognition.interimResults = false;
-
-    recognition.onresult = (event) => {
-      const transcript = event.results[event.results.length - 1][0].transcript.trim();
-      console.log('🎤 الأمر الصوتي:', transcript);
-
-      if (transcript.includes('فوق')) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } 
-      else if (transcript.includes('تحت')) {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      }
-      else if (transcript.includes('أعلى الصفحة')) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } 
-      
-      else if (transcript.includes('أسفل الصفحة')) {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      } 
-      else if (transcript.includes('تحديث')) {
-        window.location.reload();
-      }
-    };
-
-    recognition.onerror = (e) => {
-      console.error('🎤 خطأ في التعرف على الصوت:', e.error);
-    };
-
-    recognition.start();
-    return () => recognition.stop();
-  }, [voiceActive]);
-
-  // 🔊 Text Reader
   const readText = () => {
-    const clone = document.body.cloneNode(true);
-    const tool = clone.querySelector('.accessibility-wrapper');
-    if (tool) tool.remove();
-
-    const text = clone.innerText;
+    const text = document.body.innerText;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'ar-SA';
     speechSynthesis.cancel();
     speechSynthesis.speak(utterance);
   };
 
-  const togglePanel = (panel) => {
-    setActivePanel(activePanel === panel ? null : panel);
-  };
-
-  const setFontSize = (size) => {
-    setFontClass(size);
-  };
-
-  const setContrast = (contrast) => {
-    setContrastClass(contrast === 'contrast-none' ? '' : contrast);
-    setIsGrayscale(contrast === 'contrast-none');
-  };
-
   const resetAll = () => {
-    setFontClass('font-100');
+    setFontSizeClass('font-100');
     setFontFamilyClass('font-cairo');
     setContrastClass('');
     setIsGrayscale(false);
     setCursorLarge(false);
     setHighlightLinks(false);
     setHideImages(false);
-    setVoiceActive(false);
     speechSynthesis.cancel();
 
     document.body.classList.remove(
@@ -157,105 +91,113 @@ const AccessibilityTool = () => {
     });
   };
 
+  const tools = [
+    { name: "حجم الخط", icon: "🔠", id: "fontSize" },
+    { name: "نوع الخط", icon: "✍️", id: "fontType" },
+    { name: "تشبع الألوان", icon: "🎨", id: "colorContrast" },
+    { name: "تكبير المؤشر", icon: "🚩", id: "cursorSize" },
+    { name: "تمييز الروابط والأزرار", icon: "🔗", id: "linkHighlight" },
+    { name: "قراءة النص", icon: "🗣️", id: "textReader" },
+    { name: "إخفاء الصور", icon: "🖼️", id: "hideImages" },
+    { name: "استعادة الإعدادات", icon: "♻️", id: "resetAll" },
+  ];
+
   return (
-    <div className="accessibility-wrapper">
-      <div
-        className="accessibility-container"
-        onMouseEnter={() => setShowFeatures(true)}
-        onMouseLeave={() => setShowFeatures(false)}
-      >
-        <button className="main-icon" aria-label="فتح أدوات الوصول">
-          <img src="access-icon.png" alt="رمز الوصول" />
+    <div className={`accessibility-container ${isOpen ? 'open' : ''}`}>
+      <div className={`access-sidebar ${isOpen ? 'open' : ''}`}>
+        <button className="access-button" onClick={() => setIsOpen(!isOpen)}>
+          <img src={icon} alt="Accessibility" />
         </button>
 
-        {showFeatures && (
-          <div className="features-box">
-            {/* Font Size */}
-            <div>
-              <button className="feature-button" onClick={() => togglePanel('font')}>🔠 حجم الخط</button>
-              {activePanel === 'font' && (
-                <div className="settings-panel">
-                  <button className="option-button gray-btn" onClick={() => setFontSize('font-100')}>100%</button>
-                  <button className="option-button gray-btn" onClick={() => setFontSize('font-150')}>150%</button>
-                  <button className="option-button gray-btn" onClick={() => setFontSize('font-200')}>200%</button>
+        <div className={`mode-buttons-wrapper ${isOpen ? 'open' : ''}`}>
+          <button className="mode-button" title="نمط صوتي"><img src={audioIcon} alt="نمط صوتي" /></button>
+          <button className="mode-button" title="نمط قراءة"><img src={textIcon} alt="نمط قراءة" /></button>
+          <button className="mode-button" title="ضعف البصر"><img src={visionIcon} alt="ضعف البصر" /></button>
+          <button className="mode-button" title="نمط التوحد"><img src={autismIcon} alt="نمط التوحد" /></button>
+          <button className="mode-button" title="الإعاقة الحركية"><img src={mobilityIcon} alt="الإعاقة الحركية" /></button>
+          <button className="mode-button" title="عسر القراءة"><img src={dyslexiaIcon} alt="عسر القراءة" /></button>
+          <button className="mode-button" title="فرط الحركة"><img src={adhdIcon} alt="فرط الحركة" /></button>
+          <button className="mode-button" title="نمط الصرع"><img src={epilepsyIcon} alt="نمط الصرع" /></button>
+        </div>
+      </div>
+
+      <div className={`accessibility-panel ${isOpen ? 'open' : ''}`}>
+        <h3 className="access-title">أدوات سهولة الوصول</h3>
+
+        <div className="tools-grid">
+          {tools.map((tool) => (
+            <div key={tool.id} className="tool-card" onClick={() => toggleFlip(tool.id)}>
+              <div className={`card-inner ${flippedCard === tool.id ? 'flipped' : ''}`}>
+                <div className="card-front">
+                  <span className="emoji">{tool.icon}</span>
+                  <span>{tool.name}</span>
                 </div>
-              )}
-            </div>
 
-            {/* Font Family */}
-            <div>
-              <button className="feature-button" onClick={() => togglePanel('font-family')}>✍️ نوع الخط</button>
-              {activePanel === 'font-family' && (
-                <div className="settings-panel">
-                  <button className="option-button gray-btn" onClick={() => setFontFamilyClass('font-cairo')}>Cairo</button>
-                  <button className="option-button gray-btn" onClick={() => setFontFamilyClass('font-tajawal')}>Tajawal</button>
-                  <button className="option-button gray-btn" onClick={() => setFontFamilyClass('font-dyslexic')}>Open Dyslexic</button>
+                <div className="card-back">
+                  {tool.id === "fontType" && (
+                    <div className="font-buttons-wrapper">
+                      <button onClick={(e) => { e.stopPropagation(); setFontFamilyClass('font-cairo'); }}>Cairo</button>
+                      <button onClick={(e) => { e.stopPropagation(); setFontFamilyClass('font-tajawal'); }}>Tajawal</button>
+                      <button onClick={(e) => { e.stopPropagation(); setFontFamilyClass('font-dyslexic'); }}>Open Dyslexic</button>
+                    </div>
+                  )}
+                  {tool.id === "fontSize" && (
+                    <div className="font-buttons-wrapper">
+                      {["font-100", "font-150", "font-200"].map((cls) => (
+                        <button
+                          key={cls}
+                          onClick={(e) => { e.stopPropagation(); setFontSizeClass(cls); }}
+                          className={fontSizeClass === cls ? 'active' : ''}
+                        >
+                          {cls.split('-')[1]}%
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  {tool.id === "colorContrast" && (
+                    <div className="font-buttons-wrapper">
+                      <button onClick={(e) => { e.stopPropagation(); setContrastClass('contrast-high'); setIsGrayscale(false); }}>عالي</button>
+                      <button onClick={(e) => { e.stopPropagation(); setContrastClass('contrast-low'); setIsGrayscale(false); }}>منخفض</button>
+                      <button onClick={(e) => { e.stopPropagation(); setContrastClass(''); setIsGrayscale(true); }}>تدرج رمادي</button>
+                    </div>
+                  )}
+                  {tool.id === "cursorSize" && (
+                    <div className="font-buttons-wrapper">
+                      <button onClick={(e) => { e.stopPropagation(); setCursorLarge(true); }}>تكبير</button>
+                      <button onClick={(e) => { e.stopPropagation(); setCursorLarge(false); }}>إعادة</button>
+                    </div>
+                  )}
+                  {tool.id === "linkHighlight" && (
+                    <div className="font-buttons-wrapper">
+                      <button onClick={(e) => { e.stopPropagation(); setHighlightLinks(prev => !prev); }}>تفعيل</button>
+                    </div>
+                  )}
+                  {tool.id === "textReader" && (
+                    <div className="font-buttons-wrapper">
+                      <button onClick={(e) => { e.stopPropagation(); readText(); }}>تشغيل</button>
+                    </div>
+                  )}
+                  {tool.id === "hideImages" && (
+                    <div className="font-buttons-wrapper">
+                      <button onClick={(e) => { e.stopPropagation(); setHideImages(prev => !prev); }}>
+                        {hideImages ? "إظهار" : "إخفاء"}
+                      </button>
+                    </div>
+                  )}
+                  {tool.id === "resetAll" && (
+                    <div className="font-buttons-wrapper">
+                      <button onClick={(e) => { e.stopPropagation(); resetAll(); }}>إعادة تعيين</button>
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
             </div>
-
-            {/* Contrast */}
-            <div>
-              <button className="feature-button" onClick={() => togglePanel('contrast')}>🎨 تشبع الألوان</button>
-              {activePanel === 'contrast' && (
-                <div className="settings-panel">
-                  <button className="option-button gray-btn" onClick={() => setContrast('contrast-high')}>تشبع عالي</button>
-                  <button className="option-button gray-btn" onClick={() => setContrast('contrast-low')}>تشبع منخفض</button>
-                  <button className="option-button gray-btn" onClick={() => setContrast('contrast-none')}>عدم التشبع</button>
-                </div>
-              )}
-            </div>
-
-            {/* Cursor */}
-            <div>
-              <button className="feature-button" onClick={() => setCursorLarge(!cursorLarge)}>
-                {cursorLarge ? '👡 إعادة المؤشر' : '👡 تكبير المؤشر'}
-              </button>
-            </div>
-
-            {/* Highlight Links */}
-            <div>
-              <button className="feature-button" onClick={() => setHighlightLinks(!highlightLinks)}>
-                {highlightLinks ? '🔗 إزالة التمييز' : '🔗 تمييز الروابط والأزرار'}
-              </button>
-            </div>
-
-            {/* Text Reader */}
-            <div>
-              <button className="feature-button" onClick={() => togglePanel('read')}>🔊 قراءة النص</button>
-              {activePanel === 'read' && (
-                <div className="settings-panel">
-                  <button className="option-button green-btn" onClick={readText}>تشغيل</button>
-                </div>
-              )}
-            </div>
-
-            {/* 🆕 Voice Command */}
-            {/* 🆕 Voice Command */}
-            <div>
-              <button className="feature-button" onClick={() => setVoiceActive(!voiceActive)}>
-                {voiceActive ? '🎙️ إيقاف الأوامر الصوتية' : '🎙️ تشغيل الأوامر الصوتية'}
-              </button>
-              {voiceActive && <span className="voice-on-indicator">🔊 جاري الاستماع</span>}
-            </div>
-
-
-            {/* Hide Images */}
-            <div>
-              <button className="feature-button" onClick={() => setHideImages(!hideImages)}>
-                {hideImages ? '🖼️ إظهار الصور' : '🖼️ إخفاء الصور'}
-              </button>
-            </div>
-
-            {/* Reset */}
-            <div>
-              <button className="feature-button" onClick={resetAll}>♻️ استعادة الإعدادات</button>
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default AccessibilityTool;
+export default AccessibilityTools;
+
