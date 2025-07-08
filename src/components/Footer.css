@@ -2,7 +2,7 @@
 .footer {
   background: linear-gradient(to top, rgba(31, 64, 55, 0.95), rgba(62, 102, 91, 0.95)); /* تدرج لوني من الأسفل للأعلى */
   color: rgb(255, 255, 255); /* لون الخط أبيض */
-  font-family: 'Cairo', sans-serif; /* خط عربي */
+  font-family: 'Cairo', sans-serif;
   direction: rtl; /* اتجاه النص من اليمين لليسار */
   padding: 2rem 0 1.5rem; /* مساحات داخلية عمودية */
   width: 100%; /* عرض كامل */
