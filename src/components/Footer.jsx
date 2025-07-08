@@ -9,12 +9,15 @@ const Footer = () => {
         <div className="subscribe">
           <h3>اشترك في نشرتنا البريدية</h3>
           <input type="email" placeholder="أدخل بريدك الإلكتروني" />
+          <button className="subscribe-button">
+            اشتراك
+            <i className="bi bi-arrow-left"></i>
+          </button>
           <div className="social-icons">
-            
             <i className="bi bi-instagram" />
             <i className="bi bi-linkedin" />
             <i className="bi bi-snapchat" />
-<i className="bi bi-twitter-x"></i>
+            <i className="bi bi-twitter-x"></i>
           </div>
         </div>
 

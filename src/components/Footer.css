@@ -11,9 +11,10 @@
 
 /* محتوى التذييل */
 .footer-content {
-  max-width: 1200px; /* أقصى عرض للمحتوى */
-  margin: 0 auto; /* تمركز المحتوى أفقياً */
-  padding: 0 2rem; /* حشوة أفقية داخلية */
+  width: 100%; /* عرض كامل */
+  max-width: none; /* إزالة الحد الأقصى للعرض */
+  margin: 0; /* إزالة التمركز */
+  padding: 0 1rem; /* حشوة جانبية بسيطة */
   display: flex; /* استخدام flexbox */
   justify-content: space-between; /* توزيع المسافات بين العناصر */
   align-items: flex-start; /* محاذاة العناصر من الأعلى */
@@ -26,10 +27,8 @@
 .subscribe {
   min-width: 280px; /* الحد الأدنى للعرض */
   max-width: 320px; /* الحد الأقصى للعرض */
-  padding: 2rem 1rem; /* حشوة داخلية */
-  background: rgba(255, 255, 255, 0.1); /* خلفية شفافة قليلاً */
+  padding: 2rem 0.5rem; /* حشوة داخلية */
   border-radius: 15px; /* زوايا دائرية */
-  box-shadow: 0 0 15px rgba(19, 172, 134, 0.25); /* ظل ناعم أخضر */
   transition: background-color 0.3s ease; /* تأثير التغير في الخلفية بسلاسة */
   display: flex; /* استخدام flexbox */
   flex-direction: column; /* ترتيب عمودي */
@@ -99,8 +98,8 @@
 
 /* كل عمود في روابط التذييل */
 .footer-links > div {
-  flex: 1; /* نفس الحجم نسبيًا */
-  min-width: 160px; /* الحد الأدنى للعرض */
+  flex: 1 1 20%; /* توزيع الأعمدة على عرض الشاشة */
+  min-width: 180px; /* عرض أدنى أكبر للأعمدة */
 }
 
 /* عناوين الأعمدة */
@@ -142,4 +141,23 @@
   padding-top: 1rem; /* حشوة داخلية من الأعلى */
   font-size: 1.3rem; /* حجم الخط أكبر */
   color: #ffffff; /* لون الخط أبيض */
+}
+
+
+.subscribe button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #13ac86; /* لون أخضر */
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex; /* لعرض النص والأيقونة بجانب بعض */
+  align-items: center; /* محاذاة وسط عمودي */
+  gap: 8px; /* مسافة بين النص والسهم */
+  transition: background-color 0.3s ease;
+}
+
+.subscribe button:hover {
+  background-color: #0e8f6f;
 }
