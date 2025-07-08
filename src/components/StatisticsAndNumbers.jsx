@@ -66,7 +66,7 @@ export default function StatisticsAndNumbers() {
         {showStats && (
           <>
             <text
-              x={baseX - 300}
+              x={baseX - 400}
               y={baseY + 5}
               className="stats-title"
               textAnchor="end"
