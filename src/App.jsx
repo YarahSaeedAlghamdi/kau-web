@@ -8,6 +8,8 @@ import Partnerships from './components/Partnerships';
 import Footer from "./components/Footer";
 import UniversityMessage from "./components/UniversityMessage";
 import App0 from './Tool_Main';
+import KAUContacts from "./components/KAUContacts"; 
+
 
 
 function App() {
@@ -20,7 +22,9 @@ function App() {
       <Achievements />
       <Partnerships />
       <NewsSection />
+        <KAUContacts /> {/* عرض المكون */}
       <Footer />
+
     </div>
   )
 
