@@ -15,7 +15,7 @@ import KAUContacts from "./components/KAUContacts";
 
 function App() {
   return (
-    <div className="App">
+    <div id="app-root" className="App">
       {/* You can add other sections/components here */}
       
       <App0/>

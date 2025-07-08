@@ -67,3 +67,81 @@ button:focus-visible {
   }
 }
 
+/**/
+@keyframes drawLine {
+  from {
+    stroke-dasharray: 3000;
+    stroke-dashoffset: 3000;
+  }
+  to {
+    stroke-dasharray: 3000;
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw path {
+  animation: drawLine 4s ease forwards;
+}
+/* تطبيق الخط والحجم على كل العناصر داخل #app-root */
+#app-root {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* حجم الخط بحسب الكلاسات المضافة من أداة الوصول */
+#app-root.font-100 {
+  font-size: 100%;
+}
+
+#app-root.font-150 {
+  font-size: 150%;
+}
+
+#app-root.font-200 {
+  font-size: 200%;
+}
+
+/* نوع الخط بحسب الكلاسات */
+#app-root.font-cairo {
+  font-family: 'Cairo', sans-serif;
+}
+
+#app-root.font-tajawal {
+  font-family: 'Tajawal', sans-serif;
+}
+
+#app-root.font-dyslexic {
+  font-family: 'OpenDyslexic', sans-serif;
+}
+/* هذه القاعدة تجعل كل العناصر داخل app-root تتبع حجم الخط ونوع الخط */
+#app-root,
+#app-root * {
+  font-size: inherit !important;
+  font-family: inherit !important;
+}
+
+/* تعريف مستويات حجم الخط */
+#app-root.font-100 {
+  font-size: 100%;
+}
+
+#app-root.font-150 {
+  font-size: 150%;
+}
+
+#app-root.font-200 {
+  font-size: 200%;
+}
+
+/* أنواع الخطوط */
+#app-root.font-cairo {
+  font-family: 'Cairo', sans-serif;
+}
+
+#app-root.font-tajawal {
+  font-family: 'Tajawal', sans-serif;
+}
+
+#app-root.font-dyslexic {
+  font-family: 'OpenDyslexic', sans-serif;
+}
