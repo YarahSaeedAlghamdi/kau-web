@@ -7,6 +7,8 @@ import Achievements from './components/Achievements';
 import Partnerships from './components/Partnerships';
 import Footer from "./components/Footer";
 import UniversityMessage from "./components/UniversityMessage";
+import KAUContacts from "./components/KAUContacts"; 
+
 
 
 function App() {
@@ -18,7 +20,9 @@ function App() {
       <Achievements />
       <Partnerships />
       <NewsSection />
+        <KAUContacts /> {/* عرض المكون */}
       <Footer />
+
     </div>
   )
 
