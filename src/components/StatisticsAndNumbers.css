@@ -1,0 +1,93 @@
+@keyframes drawLine {
+  from {
+    stroke-dasharray: 3000;
+    stroke-dashoffset: 3000;
+  }
+  to {
+    stroke-dasharray: 3000;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dashMotion {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 100;
+  }
+}
+
+.animate-draw path {
+  animation: drawLine 4s ease forwards;
+}
+
+.stats-circle {
+  stroke: #00b300;
+  stroke-dasharray: 6, 6;
+  stroke-dashoffset: 0;
+  fill: white;
+  transition: all 0.3s ease;
+  animation: dashMotion 2s linear infinite;
+}
+
+.stats-circle:hover {
+  stroke-width: 4;
+  filter: drop-shadow(0 0 6px #3c4e3c);
+  cursor: default;
+}
+
+.stats-value {
+  font-size: 22px;
+  font-weight: bold;
+  fill: black !important;
+  stroke: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.stats-label {
+  font-size: 14px;
+  fill: black !important;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.stats-connector {
+  stroke: #00b300;
+  stroke-dasharray: 6, 6;
+  stroke-dashoffset: 0;
+  animation: dashMotion 2s linear infinite;
+  fill: none;
+}
+
+.nav-circle {
+  fill: black;
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+.nav-circle:hover {
+  fill: #00b300;
+}
+
+.stats-title {
+  font-weight: bold;
+  fill: black !important;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  stroke: none;
+}
+
+.stats-slider {
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
+
+.group-0 {
+  transform: translateX(0%);
+}
+.group-1 {
+  transform: translateX(-100%);
+}
+.group-2 {
+  transform: translateX(-200%);
+}
