@@ -56,8 +56,17 @@ export default function UniversityMessage() {
           <h1>رسالتنا في صناعة الغد</h1>
         </div>
       )}
+      {/* محتوى مخفي مخصص لقارئ النصوص فقط */}
+      <div className="sr-only">
+        {columns.map((col, index) => (
+          <p key={index}>
+            {col.title}. {col.content}
+          </p>
+        ))}
+      </div>
 
       
     </div>
+    
   );
 }

@@ -10,12 +10,12 @@ const AccessibilityTool = () => {
   const [activePanel, setActivePanel] = useState(null);
   const [fontClass, setFontClass] = useState('font-100');
   const [fontFamilyClass, setFontFamilyClass] = useState('font-cairo');
-
   const [contrastClass, setContrastClass] = useState('');
   const [isGrayscale, setIsGrayscale] = useState(false);
   const [cursorLarge, setCursorLarge] = useState(false);
   const [highlightLinks, setHighlightLinks] = useState(false);
   const [hideImages, setHideImages] = useState(false);
+  const [voiceActive, setVoiceActive] = useState(false); // 🗣️ حالة الأوامر الصوتية
 
   // 🔱 Cursor effect
   useEffect(() => {
@@ -58,13 +58,69 @@ const AccessibilityTool = () => {
 
   // 🖼️ Hide/Show Images
   useEffect(() => {
-    /* */
     document.body.classList.toggle('hide-images', hideImages);
-    /** */
     document.querySelectorAll('img').forEach(img => {
       img.style.display = hideImages ? 'none' : '';
     });
   }, [hideImages]);
+
+  // 🗣️ Voice Commands
+  useEffect(() => {
+    if (!voiceActive) return;
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert('❌ المتصفح لا يدعم التعرف على الصوت');
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'ar-SA';
+    recognition.continuous = true;
+    recognition.interimResults = false;
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[event.results.length - 1][0].transcript.trim();
+      console.log('🎤 الأمر الصوتي:', transcript);
+
+      if (transcript.includes('فوق')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } 
+      else if (transcript.includes('تحت')) {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+      else if (transcript.includes('أعلى الصفحة')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } 
+      
+      else if (transcript.includes('أسفل الصفحة')) {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } 
+      else if (transcript.includes('تحديث')) {
+        window.location.reload();
+      }
+    };
+
+    recognition.onerror = (e) => {
+      console.error('🎤 خطأ في التعرف على الصوت:', e.error);
+    };
+
+    recognition.start();
+    return () => recognition.stop();
+  }, [voiceActive]);
+
+  // 🔊 Text Reader
+  const readText = () => {
+    const clone = document.body.cloneNode(true);
+    const tool = clone.querySelector('.accessibility-wrapper');
+    if (tool) tool.remove();
+
+    const text = clone.innerText;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ar-SA';
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
+  };
 
   const togglePanel = (panel) => {
     setActivePanel(activePanel === panel ? null : panel);
@@ -79,14 +135,6 @@ const AccessibilityTool = () => {
     setIsGrayscale(contrast === 'contrast-none');
   };
 
-  const readText = () => {
-    const text = document.body.innerText;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ar-SA';
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utterance);
-  };
-
   const resetAll = () => {
     setFontClass('font-100');
     setFontFamilyClass('font-cairo');
@@ -95,6 +143,7 @@ const AccessibilityTool = () => {
     setCursorLarge(false);
     setHighlightLinks(false);
     setHideImages(false);
+    setVoiceActive(false);
     speechSynthesis.cancel();
 
     document.body.classList.remove(
@@ -182,6 +231,16 @@ const AccessibilityTool = () => {
                 </div>
               )}
             </div>
+
+            {/* 🆕 Voice Command */}
+            {/* 🆕 Voice Command */}
+            <div>
+              <button className="feature-button" onClick={() => setVoiceActive(!voiceActive)}>
+                {voiceActive ? '🎙️ إيقاف الأوامر الصوتية' : '🎙️ تشغيل الأوامر الصوتية'}
+              </button>
+              {voiceActive && <span className="voice-on-indicator">🔊 جاري الاستماع</span>}
+            </div>
+
 
             {/* Hide Images */}
             <div>
