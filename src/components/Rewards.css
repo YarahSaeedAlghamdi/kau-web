@@ -8,9 +8,21 @@
 }
 
 .rewards-heading {
-  font-size: 24px;
-  margin-bottom: 1rem;
+  font-size: 2rem;
   color: #00664f;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+.rewards-heading::after {
+  content: "";
+  width: 70%;
+  height: 3.2px;
+  background-color: #00664f;
+  position: absolute;
+  bottom: -8px;
+  left: 20%;
+  border-radius: 4px;
 }
 
 .rewards-description {
@@ -36,16 +48,18 @@
 }
 
 .reward-item {
-  background-color: #DEE8E1;
+  background-color: #ffffff;
   padding: 1rem;
   border-radius: 10px;
+  border: 2px solid #caa06b;
   min-width: 300px;
   flex: 0 0 auto;
   text-align: right;
   transition: transform 0.3s ease;
 }
 .reward-item:hover {
-  transform: scale(1.03);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 102, 79, 0.2);
 }
 
 .reward-icon {
@@ -54,7 +68,8 @@
 }
 
 .reward-text {
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: bold;
   color: #004d40;
 }
 
