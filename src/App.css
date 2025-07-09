@@ -45,16 +45,11 @@
 
 .app {
 /**  font-family: Arial, sans-serif;**/
-  padding: 2rem;
+  padding: 0 2rem;
   text-align: center;
 }
 
-button {
-  margin: 0.5rem;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
+
 
 .highlighted-links a,
 .highlighted-links button {
@@ -63,7 +58,4 @@ button {
   color: #fff;
 }
 
-.content {
-  margin-top: 2rem;
-}
 
