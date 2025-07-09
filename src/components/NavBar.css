@@ -1,22 +1,57 @@
 .navbar {
-  position: fixed;
+  display: flex;
+  justify-content: center; /* الوسط */
+  background-color: transparent;
+  padding: 16px 0; /* بدون padding يمين ويسار */
+  width: 100%;
+  position: absolute;
   top: 0;
-  width: 97%;
-  padding: 12px 32px;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
-  z-index: 1000;
-  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 24px; /* ✅ بس padding داخلي بسيط */
 }
 
-.navbar.scrolled {
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+/* تقسيم الـ 3 أقسام */
+.navbar-left,
+.navbar-center,
+.navbar-right {
+  display: flex;
+  align-items: center;
 }
 
-/* الروابط الرئيسية */
+/* يسار */
+.navbar-left {
+  justify-content: flex-start;
+  gap: 16px;
+  flex: 1;
+}
+
+/* وسط */
+.navbar-center {
+  justify-content: center;
+  flex: 2;
+}
+
+/* يمين */
+.navbar-right {
+  justify-content: flex-end;
+  flex: 1;
+}
+
+/* الشعار */
+.logo-img {
+  height: 60px;
+}
+
+/* الروابط */
 .nav-links {
   display: flex;
   gap: 24px;
@@ -29,88 +64,7 @@
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 .nav-links a.dark {
   color: black;
-}
-
-/* أيقونات البحث واللغة والقائمة */
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  position: relative; /* مهم لظهور المنيو تحته */
-}
-
-.icon-img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  transition: filter 0.3s ease;
-  cursor: pointer;
-}
-
-/* زر اللغة */
-.lang-btn {
-  background: none;
-  border: 2px solid white;
-  border-radius: 8px;
-  padding: 4px 14px;
-  font-weight: bold;
-  font-size: 14px;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.lang-btn.dark {
-  color: black;
-  border-color: black;
-}
-
-/* شعار الجامعة */
-.logo-img {
-  height: 60px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  margin-top: 12px;
-  background-color: #333; /* ⬅ لون غامق أنيق (tailwind gray-800) */
-  color: white;
-  padding: 16px 0;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  min-width: 260px;  /* ⬅ عرض أكبر */
-  z-index: 9999;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.dropdown-item {
-  padding: 20px 28px;       /* ⬅ مساحة داخلية أكبر */
-  cursor: pointer;
-  font-size: 20px;          /* ⬅ حجم خط أكبر */
-  font-weight: 600;
-  transition: background-color 0.3s, padding 0.2s;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* خط فاصل ناعم */
-}
-
-.dropdown-item:last-child {
-  border-bottom: none; /* شيل الخط من آخر عنصر */
-}
-
-.dropdown-item:hover {
-  background-color: #374151; /* ⬅ لون hover متناسق */
-  padding-left: 34px;        /* ⬅ تأثير حركة خفيف */
-}
-
-
-/* دعم RTL و LTR حسب اللغة */
-.dropdown-menu.rtl {
-  right: 0;
-  left: auto;
-}
-
-.dropdown-menu.ltr {
-  left: 0;
-  right: auto;
 }
