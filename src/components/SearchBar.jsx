@@ -19,7 +19,7 @@ const SearchBar = ({ isScrolled }) => {
       <img
         src={isScrolled ? "/search-black.png" : "/search.png"}
         alt="Search"
-        className="icon-img"
+        className="icon-img preserve-image"
         onClick={handleSearchClick}
         style={{ cursor: "pointer" }}
       />
