@@ -6,33 +6,26 @@ body {
 }
 
 .partners-wrapper {
-  width: 100%;
-  height: 1250px;        /* ارتفاع مضبوط كما في الصورة */
-  overflow-y: auto;     /* لو المحتوى أطول */
-  overflow-x: hidden;
-  background: linear-gradient(to bottom, #e8f5e9, #f1f8f5);
+  background: linear-gradient(to bottom, #e8f5e9, #f1f8f5); /* تدرج أخضر ناعم */
+  padding: 60px 0;
 }
 
 .partners-container {
-  max-width: 1000px;
-  padding: 20px;
-  margin-right: 190px;
-  margin-left: auto;
-  text-align: right;
   direction: rtl;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  text-align: right;
 }
 
 .title {
-  text-align: center; /* كان right */
-  font-size: 4vw;
-  font-weight: bold;
-  color: #2e7d32;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 40px;
-  margin-top: 40;
-    margin-left: -3990px;
+  color: #2e7d32;
+  text-shadow: 1px 1px #ccc;
 }
-
-
 
 ul {
   list-style: none;
@@ -41,35 +34,31 @@ ul {
 }
 
 li {
-  margin-bottom: 30px;
-  position: relative;
-  text-align: right;
+  padding: 15px 0;
 }
 
-li a {
+li > span {
   display: inline-block;
-  text-decoration: none;
+  border-bottom: 2px solid #a5d6a7;
+  padding-bottom: 5px;
+  width: 220px; /* حسب أطول كلمة */
+  text-align: right;
+  font-size: 1.1rem;
   color: #1b5e20;
-  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+li > span:hover {
+  color: #2e7d32;
+  border-color: #66bb6a;
+  transform: translateX(-5px);
+}
+
+.partners-wrapper {
+  background-color: #e6f4ea;
+  padding: 60px 0;
   position: relative;
-padding-left: 250px;  /* لأن السهم صار يسار النص */
-  padding-right: 0;  font-size: 2vw; /* مرن مع الشاشة */
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
-
-li a:hover {
-  color: #388e3c;
-}
-
-li a::before {
-  content: "➤";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #4caf50;
-  font-size: 3vw; /* متناسق مع النص */
+  overflow: hidden;
 }
 
 .partners-wrapper::before {
@@ -78,24 +67,33 @@ li a::before {
   left: 90px;
   top: 50%;
   transform: translateY(-50%);
-  width: 300px;
+  width: 300px; /* حجم الشعار */
   height: 300px;
   background-image: url('https://www.mosoah.com/wp-content/uploads/2019/09/unnamed-2.png');
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.09;
-  z-index: 0;
+  opacity: 0.09; /* شفافية */
+  z-index: 0;
 }
 li {
-  margin-bottom: 30px;
-  position: relative;
+  padding: 10px 0;
   text-align: right;
-  border-bottom: 1px solid #a5d6a7; /* الخط أسفل النص */
-  padding-bottom: 50px;
+  position: relative;
 }
 
-li:last-child {
-  border-bottom: none; /* لو ما تبغى خط تحت آخر عنصر */
+li span {
+  display: inline-block;
+  position: relative;
+  padding-left: 20px; /* مساحة للسهم */
 }
 
+li span::after {
+  content: "➤"; /* أو أي سهم يعجبك */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4caf50;
+  font-size: 0.8rem;
+}
 
