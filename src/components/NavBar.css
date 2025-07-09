@@ -1,81 +1,88 @@
+/* ✅ النافبار الأساسي */
 .navbar {
   display: flex;
   justify-content: center;
-  position: fixed; /* ثابت في الأعلى */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   padding: 16px 24px;
-  height: 80px; /* الحجم الطبيعي */
+  height: 80px;
   background-color: transparent;
   transition: all 0.3s ease;
 }
 
-.navbar-container {
-  display: flex;
-  width: 100%;
-  max-width: 1440px; /* أو 100% */
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px; /* تأكد إن ما تضيف مساحة زيادة يمين ويسار */
-}
-
-.icon-img {
-  width: 22px !important;
-  height: 22px !important;
-  transition: none !important;
-  filter: brightness(100%);
-  transition: filter 0.3s ease;
-}
-
-/* عند النزول */
 .navbar.scrolled {
-  height: 60px; /* تصغير عند النزول */
+  height: 60px;
   background-color: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* ✅ حاوية المحتوى داخل النافبار */
+.navbar-container {
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+
+/* ✅ الروابط في وسط النافبار */
 .nav-links {
   display: flex;
-  gap: 40px; /* زد المسافة هنا حسب الحاجة */
-  font-size: 15px;
+  gap: 45px;
+  font-size: 17px;
   font-weight: bold;
 }
 
-
-/* ألوان الروابط في الوضع العادي */
 .nav-links a {
   color: white;
   text-decoration: none;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
-/* ألوان الروابط عند النزول */
 .navbar.scrolled .nav-links a {
   color: black;
 }
 
-/* زر اللغة في الوضع العادي */
+/* ✅ اللغة ككلمة */
 .lang-btn {
+  background: none;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
   color: white;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  padding: 0;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
 }
 
-/* زر اللغة عند النزول */
+.lang-btn:hover {
+  border-bottom: 2px solid currentColor;
+}
+
 .navbar.scrolled .lang-btn {
   color: black;
 }
 
-/* أيقونات القائمة في الوضع العادي */
-.navbar .icon-img {
+/* ✅ أيقونة القائمة */
+.icon-img {
+  width: 22px !important;
+  height: 22px !important;
   filter: brightness(100%);
+  transition: filter 0.3s ease;
 }
 
-/* أيقونات القائمة عند النزول */
 .navbar.scrolled .icon-img {
   filter: brightness(0);
 }
 
+/* ✅ ترتيب عناصر النافبار */
 .navbar-left,
 .navbar-center,
 .navbar-right {
@@ -84,33 +91,90 @@
   align-items: center;
 }
 
-/* اليسار */
 .navbar-left {
-  flex: 0 0 auto; /* حجم ثابت بناءً على المحتوى */
+  flex: 0 0 auto;
   justify-content: flex-start;
-  gap: 5px;
+  gap: 25px;
 }
 
-/* الوسط */
 .navbar-center {
-  flex: 1 1 auto; /* ياخذ المساحة المتبقية */
+  flex: 1 1 auto;
   justify-content: center;
 }
 
-/* اليمين */
 .navbar-right {
-  flex: 0 0 auto; /* عشان حجمها بناء على محتواها */
+  flex: 0 0 auto;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
 }
 
+/* ✅ شعار الجامعة */
 .logo-img {
-  height: 100px; /* حجم الشعار */
+  height: 120px;
   cursor: pointer;
 }
 
-/* عشان المحتوى ما يختفي تحت النافبار */
+/* ✅ تأخير محتوى الصفحة بعد النافبار */
 main {
-  padding-top: 120px; /* زودته عشان الشعار كبير */
+  padding-top: 120px;
+}
+
+/* ✅ المنيو المنبثقة من الأعلى */
+.top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 60px;
+  animation: slideDown 0.4s ease forwards;
+}
+
+/* زر الإغلاق */
+.top-menu-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+/* عناصر القائمة */
+.top-menu-items {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.top-menu-item {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.top-menu-item:hover {
+  color: #60C16B;
+}
+
+/* ✅ حركة الظهور من الأعلى */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
