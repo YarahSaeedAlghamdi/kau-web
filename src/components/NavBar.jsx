@@ -6,6 +6,7 @@ const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState("ar");
   const [showMenu, setShowMenu] = useState(false);
+  const [hoveredItemIndex, setHoveredItemIndex] = useState(null); // ✅ جديد
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -52,23 +53,42 @@ const NavBar = () => {
       ];
 
   const sideItems = [
-    "إدارة الجامعة",
-    "الكليات",
-    "المرافق",
-    "المراكز",
-    "العمادات",
+    {
+      title: "إدارة الجامعة",
+      subItems: [
+        "رئيس الجامعة",
+        "مكتب نائب الرئيس لشطر الطالبات",
+        "مكتب نائب الرئيس للدراسات العليا والبحث العلمي",
+        "مكتب نائب الرئيس للأعمال والإبداع المعرفي",
+        "مكتب نائب الرئيس للشؤون التعليمية"
+      ],
+    },
+    {
+      title: "الكليات",
+      subItems: ["كلية الهندسة", "كلية الطب", "كلية الحاسبات"]
+    },
+    {
+      title: "المرافق",
+      subItems: []
+    },
+    {
+      title: "المراكز",
+      subItems: []
+    },
+    {
+      title: "العمادات",
+      subItems: []
+    }
   ];
 
   return (
     <>
       <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
         <div className="navbar-container">
-          {/* ✅ يمين: الشعار */}
           <div className="navbar-right">
             <img src="/KAU_1.png" alt="KAU Logo" className="logo-img preserve-image" />
           </div>
 
-          {/* ✅ وسط: الروابط */}
           <div className="navbar-center">
             <div className="nav-links">
               {navItems.map((item, idx) => (
@@ -79,7 +99,6 @@ const NavBar = () => {
             </div>
           </div>
 
-          {/* ✅ يسار: البحث واللغة والقائمة */}
           <div className="navbar-left" ref={menuRef}>
             <SearchBar isScrolled={isScrolled} />
             <span
@@ -96,41 +115,59 @@ const NavBar = () => {
             <img
               src={isScrolled ? "/menu_black.png" : "/menu.png"}
               alt="Menu"
-              className="icon-img preserve-image" 
+              className="icon-img preserve-image"
               onClick={() => setShowMenu(true)}
             />
           </div>
         </div>
       </nav>
 
-    {/* ✅ القائمة الجانبية المفتوحة */}
-    {showMenu && (
-      <div className="top-menu">
-        <div className="top-menu-header">
-          {/* ✅ روابط الهيدر */}
-          <div className="top-menu-nav">
-            {navItems.map((item, idx) => (
-              <a key={idx} href="#" className="top-menu-nav-link">
-                {item}
-              </a>
-            ))}
+{/* ✅ القائمة الجانبية */}
+{showMenu && (
+  <div className="top-menu">
+    <div className="top-menu-header">
+      <div className="top-menu-nav">
+        {navItems.map((item, idx) => (
+          <a key={idx} href="#" className="top-menu-nav-link">
+            {item}
+          </a>
+        ))}
+        <button className="close-btn" onClick={() => setShowMenu(false)}>
+          <img src="/close .png" alt="إغلاق" className="close-icon-img" />
+        </button>
+      </div>
+      <div className="full-underline"></div>
+    </div>
+
+    {/* ✅ الغلاف الكامل للقائمة الرئيسية والفرعية */}
+    <div className="top-menu-items-wrapper">
+      {/* ✅ القائمة الجانبية (عناوين رئيسية) */}
+      <div className="top-menu-items">
+        {sideItems.map((item, idx) => (
+          <div
+            className="top-menu-item-wrapper"
+            key={idx}
+            onMouseEnter={() => setHoveredItemIndex(idx)}
+            onMouseLeave={() => setHoveredItemIndex(null)}
+          >
+            <div className="top-menu-item">{item.title}</div>
           </div>
+        ))}
+      </div>
 
-          {/* ✅ زر الإغلاق */}
-          <button className="close-btn" onClick={() => setShowMenu(false)}>×</button>
-        </div>
-
-        {/* ✅ القائمة الجانبية */}
-        <div className="top-menu-items">
-          {sideItems.map((item, idx) => (
-            <div key={idx} className="top-menu-item" onClick={() => setShowMenu(false)}>
-              {item}
+      {/* ✅ القائمة الفرعية الثابتة (تظهر يسار العنصر المهوفر عليه) */}
+      {hoveredItemIndex !== null && sideItems[hoveredItemIndex].subItems.length > 0 && (
+        <div className="fixed-submenu">
+          {sideItems[hoveredItemIndex].subItems.map((sub, i) => (
+            <div key={i} className="submenu-item">
+              {sub}
             </div>
           ))}
         </div>
-      </div>
-    )}
-
+      )}
+    </div>
+  </div>
+)}
 
     </>
   );

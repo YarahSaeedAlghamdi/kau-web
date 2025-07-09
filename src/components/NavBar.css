@@ -151,57 +151,101 @@ main {
   z-index: 2;
 }
 
-/* ✅ الهيدر: روابط + زر إغلاق */
-.top-menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 60px;
-  flex-wrap: wrap;
-}
+
 
 /* ✅ زر الإغلاق */
 .close-btn {
-  background: none;
+  position: absolute;
+  left: -6em;
+  background-color: transparent !important; /* ✅ أجباري */
   border: none;
   color: white;
   font-size: 2.5rem;
   cursor: pointer;
-  padding: 6px 14px;
+  z-index: 1000;
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  box-shadow: none !important;
 }
+
+.close-icon-img {
+  width: 28px;     /* ⬅️ الحجم المناسب */
+  height: 28px;
+  filter: brightness(100%);
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover .close-icon-img {
+  transform: scale(1.1);
+}
+
 
 /* ✅ روابط الهيدر وسط الشاشة */
 .top-menu-nav {
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 2em;
   font-size: 22px;
   font-weight: bold;
   flex-wrap: wrap;
-  margin-right: 120px;           /* ✅ نفس المسافة حق اللي تحت */
-  margin-top: 80px;
+  margin-top: 5em;
+}
+
+
+.header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* عشان يبدأ من اليمين */
+  width: fit-content; /* ياخذ عرض روابط الهيدر فقط */
+  margin-right:15em ;
+}
+
+
+.top-menu-header {
+  display: flex;
+  justify-content: space-between; /* الزر يسار والهيدر يمين */
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* عشان يبدأ من اليمين */
+  width: fit-content; /* ياخذ عرض روابط الهيدر فقط */
+  margin-right:10em ;
+}
+
+
+.full-underline {
+  width: 100%;
+  height: 1px;
+  background-color: #666666; /* لون الخط */
+  margin-top: 2.5em; /* مسافة بين الروابط والخط */
+  width: 74vw; /* ياخذ عرض الشاشة بالكامل */
 
 }
+
 
 .top-menu-nav a {
   color: rgb(188, 188, 188);
   text-decoration: none;
   transition: color 0.3s ease;
+
 }
 
 .top-menu-nav a:hover {
-  color: #60C16B;
+  color: rgb(188, 188, 188);
+  transform: scale(1.2); /* ⬅️ يكبر 20% عند الهوفر */
+
 }
 
 /* ✅ القائمة الجانبية يمين */
 .top-menu-items {
-  margin-top: 100px;
+  margin-top: 2.5em;
   display: flex;
   flex-direction: column;
   gap: 24px;
   align-items: flex-start;    /* ✅ يحط العناصر لليسار */
   text-align: right;           /* ✅ يحاذي النص لليسار */
-  margin-right: 180px;          /* ✅ يحط مسافة من اليسار */
+  margin-right: 188px;          /* ✅ يحط مسافة من اليسار */
   margin-left: auto;
   width: fit-content;
 }
@@ -215,6 +259,7 @@ main {
   padding: 0;
   margin: 0;
   direction: ltr;            /* ✅ يخلي النص يبدأ من اليسار */
+  
 }
 
 
@@ -230,4 +275,51 @@ main {
   to {
     transform: translateY(0);
   }
+}
+
+
+
+
+
+.top-menu-items-wrapper {
+  display: flex;
+  flex-direction: row; /* القائمة الرئيسية يمين - الفرعية يسار */
+  position: relative;
+}
+
+
+.top-menu-item-wrapper {
+  position: relative;
+}
+
+
+.top-menu-item-wrapper:hover .top-menu-item {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.fixed-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  min-width: 300px;
+  text-align: right;
+  margin-top: 2.7em;
+  margin-left: 35em;
+  padding-top: 0 !important;
+  z-index: 9999; /* ✅ أعلى قيمة مضمونة */
+
+}
+
+.submenu-item {
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.submenu-item:hover {
+  color: #60C16B;
 }
