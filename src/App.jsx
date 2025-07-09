@@ -16,25 +16,26 @@ import Home from './components/Home';
 
 function App() {
   return (
-    <div id="app-root" className="App">
-      {/* You can add other sections/components here */}
-      
-      <App0/>
-      <NavBar />
-      <Home />
-      
-      <StatisticsAndNumbers />
-      <UniversityMessage />
-      <Achievements />
-      <Partnerships />
-      <NewsSection />
-        <KAUContacts /> {/* عرض المكون */}
-      <Footer />
+    <>
+      {/* ✅ لوحة الوصول خارج المحتوى */}
+      <App0 />
 
-    </div>
-  )
-
+      {/* ✅ محتوى الموقع */}
+      <div id="app-root" className="App">
+        <NavBar />
+        <Home />
+        <StatisticsAndNumbers />
+        <UniversityMessage />
+        <Achievements />
+        <Partnerships />
+        <NewsSection />
+        <KAUContacts />
+        <Footer />
+      </div>
+    </>
+  );
 }
+
 
 export default App
 

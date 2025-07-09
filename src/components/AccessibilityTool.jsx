@@ -17,20 +17,22 @@ const AccessibilityTools = () => {
     'font-md': 'متوسط',
     'font-xl': 'كبير',
   };
-
-const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
+  const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
   const contrastModes = ['', 'contrast-high', 'contrast-low', 'grayscale'];
+  const saturationLevels = ['low', 'medium', 'high']; // ✅ جديد
 
   const [isOpen, setIsOpen] = useState(false);
   const [flippedCard, setFlippedCard] = useState(null);
   const [fontSizeIndex, setFontSizeIndex] = useState(0);
   const [fontFamilyIndex, setFontFamilyIndex] = useState(0);
   const [contrastIndex, setContrastIndex] = useState(0);
+  const [saturationIndex, setSaturationIndex] = useState(1); // ✅ جديد
   const [cursorLarge, setCursorLarge] = useState(false);
   const [highlightLinks, setHighlightLinks] = useState(false);
   const [hideImages, setHideImages] = useState(false);
 
   const contrastClass = contrastModes[contrastIndex];
+  const saturationClass = `saturation-${saturationLevels[saturationIndex]}`;
 
   const ensureAccessibilityClass = () => {
     if (!document.body.classList.contains('apply-accessibility')) {
@@ -52,7 +54,6 @@ const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
     }
   }, [fontFamilyIndex]);
 
-
   useEffect(() => {
     document.body.classList.remove('contrast-high', 'contrast-low', 'grayscale');
     if (contrastClass === 'grayscale') {
@@ -61,6 +62,13 @@ const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
       document.body.classList.add(contrastClass);
     }
   }, [contrastClass]);
+
+  useEffect(() => {
+    document.body.classList.remove('saturation-low', 'saturation-medium', 'saturation-high');
+    if (document.body.classList.contains('apply-accessibility')) {
+      document.body.classList.add(saturationClass);
+    }
+  }, [saturationIndex]);
 
   useEffect(() => {
     document.body.style.cursor = cursorLarge ? 'url("/cursor-large.cur"), auto' : 'auto';
@@ -73,16 +81,11 @@ const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
   useEffect(() => {
     const root = document.getElementById("app-root");
     if (!root) return;
-
     root.classList.toggle('hide-images', hideImages);
     root.querySelectorAll('img:not(.preserve-image)').forEach((img) => {
       img.style.display = hideImages ? 'none' : '';
     });
-  }, [hideImages]);
-
-  const toggleFlip = (cardId) => {
-    setFlippedCard(prev => (prev === cardId ? null : cardId));
-  };
+  }, [hideImages]);
 
   const cycleFontSize = () => {
     ensureAccessibilityClass();
@@ -98,17 +101,15 @@ const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
     setContrastIndex((prev) => (prev + 1) % contrastModes.length);
   };
 
-  const toggleCursor = () => {
-    setCursorLarge(prev => !prev);
+  const cycleSaturation = () => {
+    ensureAccessibilityClass();
+    setSaturationIndex((prev) => (prev + 1) % saturationLevels.length);
   };
 
-  const toggleHighlight = () => {
-    setHighlightLinks(prev => !prev);
-  };
-
-  const toggleImages = () => {
-    setHideImages(prev => !prev);
-  };
+  const toggleCursor = () => setCursorLarge(prev => !prev);
+  const toggleHighlight = () => setHighlightLinks(prev => !prev);
+  const toggleImages = () => setHideImages(prev => !prev);
+  const toggleFlip = (cardId) => setFlippedCard(prev => (prev === cardId ? null : cardId));
 
   const readText = () => {
     const text = document.body.innerText;
@@ -119,9 +120,10 @@ const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
   };
 
   const resetAll = () => {
-    setFontSizeIndex(0); // font-xs
-    setFontFamilyIndex(0); // font-cairo
+    setFontSizeIndex(0);
+    setFontFamilyIndex(0);
     setContrastIndex(0);
+    setSaturationIndex(1);
     setCursorLarge(false);
     setHighlightLinks(false);
     setHideImages(false);
@@ -132,10 +134,10 @@ const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
       'contrast-high', 'contrast-low', 'grayscale',
       'highlighted-links',
       'font-tajawal', 'font-dyslexic',
+      'saturation-low', 'saturation-high',
       'apply-accessibility'
     );
-
-    document.body.classList.add('font-xs');
+    document.body.classList.add('font-xs', 'saturation-medium');
     document.querySelectorAll('img').forEach(img => img.style.display = '');
     document.body.style.cursor = 'auto';
   };
@@ -157,16 +159,15 @@ const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
         <button className="access-button" onClick={() => setIsOpen(!isOpen)}>
           <img src={icon} alt="Accessibility" className="preserve-image" />
         </button>
-
         <div className={`mode-buttons-wrapper ${isOpen ? 'open' : ''}`}>
-          <button className="mode-button" title="نمط صوتي"><img src={audioIcon} alt="نمط صوتي" className="preserve-image" /></button>
-          <button className="mode-button" title="نمط قراءة"><img src={textIcon} alt="نمط قراءة"className="preserve-image"  /></button>
-          <button className="mode-button" title="ضعف البصر"><img src={visionIcon} alt="ضعف البصر" className="preserve-image" /></button>
-          <button className="mode-button" title="نمط التوحد"><img src={autismIcon} alt="نمط التوحد" className="preserve-image" /></button>
-          <button className="mode-button" title="الإعاقة الحركية"><img src={mobilityIcon} alt="الإعاقة الحركية" className="preserve-image" /></button>
-          <button className="mode-button" title="عسر القراءة"><img src={dyslexiaIcon} alt="عسر القراءة" className="preserve-image" /></button>
-          <button className="mode-button" title="فرط الحركة"><img src={adhdIcon} alt="فرط الحركة" className="preserve-image" /></button>
-          <button className="mode-button" title="نمط الصرع"><img src={epilepsyIcon} alt="نمط الصرع" className="preserve-image" /></button>
+          <button className="mode-button" title="نمط صوتي"><img src={audioIcon} alt="نمط صوتي" /></button>
+          <button className="mode-button" title="نمط قراءة"><img src={textIcon} alt="نمط قراءة" /></button>
+          <button className="mode-button" title="ضعف البصر"><img src={visionIcon} alt="ضعف البصر" /></button>
+          <button className="mode-button" title="نمط التوحد"><img src={autismIcon} alt="نمط التوحد" /></button>
+          <button className="mode-button" title="الإعاقة الحركية"><img src={mobilityIcon} alt="الإعاقة الحركية" /></button>
+          <button className="mode-button" title="عسر القراءة"><img src={dyslexiaIcon} alt="عسر القراءة" /></button>
+          <button className="mode-button" title="فرط الحركة"><img src={adhdIcon} alt="فرط الحركة" /></button>
+          <button className="mode-button" title="نمط الصرع"><img src={epilepsyIcon} alt="نمط الصرع" /></button>
         </div>
       </div>
 
@@ -197,14 +198,12 @@ const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
                   )}
                   {tool.id === "colorContrast" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); cycleContrast(); }}>
-                        {contrastClass === ''
-                          ? 'عادي'
-                          : contrastClass === 'contrast-high'
-                          ? 'عالي'
-                          : contrastClass === 'contrast-low'
+                      <button onClick={(e) => { e.stopPropagation(); cycleSaturation(); }}>
+                        {saturationLevels[saturationIndex] === 'low'
                           ? 'منخفض'
-                          : 'تدرج رمادي'}
+                          : saturationLevels[saturationIndex] === 'medium'
+                          ? 'عادي'
+                          : 'عالي'}
                       </button>
                     </div>
                   )}
