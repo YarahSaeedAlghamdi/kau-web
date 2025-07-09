@@ -16,7 +16,7 @@ body {
 .partners-container {
   max-width: 1000px;
   padding: 20px;
-  margin-right: 0;
+  margin-right: 190px;
   margin-left: auto;
   text-align: right;
   direction: rtl;
@@ -52,8 +52,8 @@ li a {
   color: #1b5e20;
   font-weight: bold;
   position: relative;
-  padding-right: 50px; /* مساحة للسهم */
-  font-size: 2vw; /* مرن مع الشاشة */
+padding-left: 250px;  /* لأن السهم صار يسار النص */
+  padding-right: 0;  font-size: 2vw; /* مرن مع الشاشة */
   white-space: nowrap;
   transition: color 0.3s ease;
 }
@@ -65,7 +65,7 @@ li a:hover {
 li a::before {
   content: "➤";
   position: absolute;
-  right: 0;
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
   color: #4caf50;
@@ -86,4 +86,16 @@ li a::before {
   opacity: 0.09;
   z-index: 0;
 }
+li {
+  margin-bottom: 30px;
+  position: relative;
+  text-align: right;
+  border-bottom: 1px solid #a5d6a7; /* الخط أسفل النص */
+  padding-bottom: 50px;
+}
+
+li:last-child {
+  border-bottom: none; /* لو ما تبغى خط تحت آخر عنصر */
+}
+
 
