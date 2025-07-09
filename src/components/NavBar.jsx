@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [language, setLanguage] = useState("ar");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,31 +14,62 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+  }, [language]);
+
+  const isArabic = language === "ar";
+
+  const navItems = isArabic
+    ? [
+        "عن الجامعة",
+        "القبول والتسجيل",
+        "الأكاديمية",
+        "البحث والابتكار",
+        "الحياة الجامعية",
+        "الخدمات الإلكترونية",
+      ]
+    : [
+        "About KAU",
+        "Admissions",
+        "Academics",
+        "Research & Innovation",
+        "Campus Life",
+        "E-Services",
+      ];
+
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      {/* اليمين: شعار الجامعة */}
+      {/* شعار */}
       <div className="logo-container">
         <img src="/kau-logo.png" alt="KAU Logo" className="logo-img" />
       </div>
-      
-      {/* الوسط: روابط التنقل */}
+
+      {/* روابط التنقل */}
       <div className="nav-links">
-        <a className={isScrolled ? "dark" : ""} href="#">عن الجامعة</a>
-        <a className={isScrolled ? "dark" : ""} href="#">القبول والتسجيل</a>
-        <a className={isScrolled ? "dark" : ""} href="#">الأكاديمية</a>
-        <a className={isScrolled ? "dark" : ""} href="#">البحث والابتكار</a>
-        <a className={isScrolled ? "dark" : ""} href="#">الحياة الجامعية</a>
-        <a className={isScrolled ? "dark" : ""} href="#">الخدمات الإلكترونية</a>
+        {navItems.map((item, idx) => (
+          <a key={idx} className={isScrolled ? "dark" : ""} href="#">
+            {item}
+          </a>
+        ))}
       </div>
 
-      {/* اليسار: الأيقونات وأداة البحث */}
+      {/* أدوات التنقل */}
       <div className="nav-icons">
-  <SearchBar isScrolled={isScrolled} />
-  <span className={`lang-text ${isScrolled ? "dark" : ""}`}>English</span>
-  <img src={isScrolled ? "/arrow-black.png" : "/arrow.png"} alt="Arrow" className="icon-img small" />
-  <img src={isScrolled ? "/menu-black.png" : "/menu.png"} alt="Menu" className="icon-img" />
-</div>
-
+        <SearchBar isScrolled={isScrolled} />
+        <button
+          className={`lang-btn ${isScrolled ? "dark" : ""}`}
+          onClick={() => setLanguage(isArabic ? "en" : "ar")}
+        >
+          {isArabic ? "English" : "العربية"}
+        </button>
+        <img
+          src={isScrolled ? "/menu-black.png" : "/menu.png"}
+          alt="Menu"
+          className="icon-img"
+        />
+      </div>
     </nav>
   );
 };

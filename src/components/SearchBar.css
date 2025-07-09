@@ -1,46 +1,60 @@
-.search-container {
-  position: relative;
-  display: inline-block;
-}
-
-.search-box {
-  position: absolute;
-  top: 60px;
-  left: -250px;
+.search-bar-wrapper {
+  position: fixed; /* بدلاً من absolute */
+  top: 80px; /* أسفل الناف بار */
+  left: 0;
+  width: 100vw; /* يأخذ عرض الشاشة بالكامل */
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px 0;
   display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 30px;
-  padding: 5px 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  justify-content: center;
   z-index: 999;
+  direction: rtl;
 }
 
-.search-box input {
-  border: none;
-  outline: none;
-  padding: 10px;
-  border-radius: 30px;
-  width: 250px;
-  font-size: 14px;
+.search-bar-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.search-input {
+  padding: 10px 20px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  width: 300px;
+  font-size: 16px;
   direction: rtl;
 }
 
 .search-btn {
   background-color: #4caf50;
   color: white;
+  padding: 10px 20px;
   border: none;
-  padding: 8px 20px;
-  border-radius: 30px;
-  margin-left: 10px;
+  border-radius: 50px;
+  font-size: 16px;
   cursor: pointer;
-  font-weight: bold;
+}
+.close-btn {
+  width: 48px;
+  height: 48px;
+  background-color: #004d40; /* أخضر غامق */
+  border-radius: 50%;         /* يجعل الشكل دائري بالكامل */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 20px;
-  margin-right: 10px;
-  cursor: pointer;
+.close-btn:hover {
+  background-color: #00695c;
 }

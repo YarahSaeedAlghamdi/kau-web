@@ -9,35 +9,14 @@
   background-color: transparent;
   z-index: 1000;
   transition: background-color 0.3s ease;
-  direction: rtl;
 }
 
 .navbar.scrolled {
   background-color: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  direction: rtl; /* تأكد إنها RTL عشان الترتيب يمين لليسار */
-  margin-left: auto;
-}
 
-.nav-links {
-  display: flex;
-  gap: 24px;
-  font-size: 15px;
-  font-weight: bold;
-  margin-right: 60px; /* ✅ تباعد بين الأيقونات والروابط */
-}
-
-/* شعار */
-.logo-img {
-  height: 60px;
-}
-
-/* روابط النص */
+/* روابط */
 .nav-links {
   display: flex;
   gap: 24px;
@@ -45,17 +24,22 @@
   font-weight: bold;
 }
 
+/* لون الرابط */
 .nav-links a {
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
 }
-
 .nav-links a.dark {
   color: black;
 }
 
-
+/* أيقونات */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
 .icon-img {
   width: 22px;
@@ -64,20 +48,24 @@
   transition: filter 0.3s ease;
 }
 
-.icon-img.small {
-  width: 14px;
-  height: 14px;
-}
-
-
-/* نص اللغة */
-.lang-text {
+/* زر اللغة */
+.lang-btn {
+  background: none;
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 4px 14px;
   font-weight: bold;
   font-size: 14px;
   color: white;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.lang-btn.dark {
+  color: black;
+  border-color: black;
 }
 
-.lang-text.dark {
-  color: black;
+/* شعار */
+.logo-img {
+  height: 60px;
 }

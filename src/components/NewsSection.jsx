@@ -1,138 +1,81 @@
-// src/components/NewsSection.jsx
-import React, { useState } from 'react'
+// src/components/HomeSections.jsx
+import React from 'react'
+import { motion } from 'framer-motion'
 import './NewsSection.css'
+import techhub from '../assets/images/techhub.jpg'
+import musicclub from '../assets/images/musicclub.jpg'
+import summerschool from '../assets/images/summerschool.jpg'
 
-const tabs = [
-  { key: 'main', label: 'الأخبار الرئيسية' },
-  { key: 'sub',  label: 'الأخبار الفرعية'   },
-  { key: 'ads',  label: 'الإعلانات'         },
-]
-
+// replace these URLs/titles with your real data
 const newsItems = [
-  // ——————— الإعلانات ———————
   {
-    category: 'ads',
     img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/25-6-2025-inner.jpg',
-    day: '25',
-    year: '2025',
-    title: 'جامعة الملك عبدالعزيز توقع اتفاقية مع "جيل باي" لإطلاق خدمة تقسيط الرسوم الدراسية',
-    link: 'https://cic.kau.edu.sa/Pages-Tuition-fees.aspx'
+    date: '25 يوليو 2025',
+    title: 'جامعة الملك عبدالعزيز توقع اتفاقية جديدة'
   },
   {
-    category: 'ads',
-    img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/25-6-2025-inner2.jpeg',
-    day: '23',
-    year: '2025',
-    title: 'جامعة الملك عبدالعزيز و "مسند العلم" يوقعان اتفاقية تعاون لاستقطاب الطلاب الدوليين',
-    link: 'https://cic.kau.edu.sa/Pages-Attracting-students.aspx'
-  },
-  {
-    category: 'ads',
-    img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/22-6-2025-inner3.jpg',
-    day: '22',
-    year: '2025',
-    title: 'مكتب نائب رئيس الجامعة يوقّع مذكرة تفاهم مع الوقف العلمي',
-    link: 'https://cic.kau.edu.sa/Pages--Memorandum-of-understanding.aspx'
-  },
-
-  // ——————— الأخبار الرئيسية ———————
-  {
-    category: 'main',
-    img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/22-6-2025-inner.jpg',   // ← replace with actual URL if you have it
-    day: '22',
-    year: '2025',
-    title: 'جامعة الملك عبدالعزيز و"جرير للاستثمار" يوقعان اتفاقية لدعم الباحثين',
-    link: 'https://cic.kau.edu.sa/Pages-Jarir-Investment.aspx'
-  },
-  {
-    category: 'main',
     img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/20-5-2025-inner.jpg',
-    day: '20',
-    year: '2025',
-    title: '13 شركة ناشئة تستعرض أعمالها ضمن مبادرة "بذرة" بجامعة الملك عبدالعزيز',
-    link: 'https://cic.kau.edu.sa/Pages-13companies.aspx'
+    date: '20 يوليو 2025',
+    title: 'انطلاق مبادرة البذرة لدعم الشركات الناشئة'
   },
   {
-    category: 'main',
-    img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/19-6-2025-inner3.jpg',
-    day: '19',
-    year: '2025',
-    title: 'جامعة الملك عبدالعزيز تحتفي بالمتقاعدين والمتقاعدات',
-    link: 'https://cic.kau.edu.sa/Pages-Honoring-retirees.aspx'
-  },
-
-  // ——————— الأخبار الفرعية ———————
-  {
-    category: 'sub',
-    img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/17-6-2025-inner.jpg',
-    day: '17',
-    year: '2025',
-    title: 'منحة "بندة" تدعم عيادات الأسنان المتنقلة بجامعة الملك عبدالعزيز',
-    link: 'https://cic.kau.edu.sa/Pages-Grant-.aspx'
-  },
-  {
-    category: 'sub',
     img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/WhatsApp%20Image%202025-06-16%20at%202.08.29%20PM%20(1).jpeg',
-    day: '16',
-    year: '2025',
-    title: 'دعوة لحضور حفل تكريم المتقاعدين والمتقاعدات',
-    link: 'https://cic.kau.edu.sa/Pages-%D8%AF%D8%B9%D9%88%D8%A9.aspx'
-  },
-  {
-    category: 'sub',
-    img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/15-6-2025-inner.jpg',
-    day: '15',
-    year: '2025',
-    title: 'مبادرة "بقاع خضراء" تجمع 15 طنًّا من النفايات خلال موسم الحج',
-    link: 'https://cic.kau.edu.sa/Pages--initiative-.aspx'
-  },
+    date: '18 يوليو 2025',
+    title: 'تكريم المتقاعدين بجامعة الملك عبدالعزيز'
+  }
 ]
 
-export default function NewsSection() {
-  const [activeTab, setActiveTab] = useState('ads')
-
-  const filtered = newsItems
-    .filter(item => item.category === activeTab)
-    .slice(0, 3)
-
+const eventItems = [
+  {
+    img: techhub,
+    date: 'باب التسجيل يُغلق 10 يوليو 2025',
+    title: 'Empowering the Future with FCIT (TECHHUB)'
+  },
+  {
+    img: musicclub,
+    date: 'افتتاح نادي الموسيقى الآن',
+    title: 'نادي الموسيقى – لهواة ومحترفي فنون العزف والغناء'
+  },
+  {
+    img: summerschool,
+    date: '29 يونيو 2025 – مدّة أسبوعين',
+    title: 'المدرسة الصيفية – أساسيات ومبادئ العلوم بطريقة ممتعة'
+  }
+]
+function Section({ title, items, className }) {
   return (
-    <section className="news-section">
-      <h2 className="news-heading">الأخبار و الإعلانات</h2>
-
-      <nav className="news-tabs">
-        {tabs.map(tab => (
-          <button
-            key={tab.key}
-            className={tab.key === activeTab ? 'active' : ''}
-            onClick={() => setActiveTab(tab.key)}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </nav>
-
-      <div className="cards-container">
-        {filtered.map((item, i) => (
-          <a
+    <section className={`hs-section ${className}`}>
+      <h2 className="hs-heading">{title}</h2>
+      <div className="hs-cards">
+        {items.map((item, i) => (
+          <motion.a
             key={i}
-            href={item.link}
-            className="card"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            className="hs-card"
+            whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(0,0,0,0.15)' }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.15 }}
           >
-            <img src={item.img} alt={item.title} />
-            <div className="date-badge">
-              <div className="day">{item.day}</div>
-              <div className="year">{item.year}</div>
+            <div className="hs-img-wrap">
+              <img src={item.img} alt={item.title} />
             </div>
-            <p className="card-title">{item.title}</p>
-          </a>
+            <div className="hs-content">
+              <p className="hs-date">{item.date}</p>
+              <h3 className="hs-title">{item.title}</h3>
+            </div>
+          </motion.a>
         ))}
       </div>
-
-      <a href="https://www.kau.edu.sa/news.aspx?Type=lst&Site_ID=0&lng=ar" className="all-news">
-        ← جميع الأخبار
-      </a>
     </section>
+  )
+}
+
+export default function HomeSections() {
+  return (
+    <>
+      <Section title="الأخبار العامة" items={newsItems} />
+      <Section title="فعاليات" items={eventItems} className="events-bg" />
+    </>
   )
 }
