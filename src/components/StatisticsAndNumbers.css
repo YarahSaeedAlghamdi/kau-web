@@ -26,7 +26,8 @@
   stroke: #00b300;
   stroke-dasharray: 6, 6;
   stroke-dashoffset: 0;
-  fill: white;
+  fill: #f2f6f2
+;
   transition: all 0.3s ease;
   animation: dashMotion 2s linear infinite;
 }
