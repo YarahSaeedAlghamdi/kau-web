@@ -13,7 +13,7 @@ import KAUContacts from "./components/KAUContacts";
 import Home from './components/Home';
 import Rewards from './components/Rewards';
 import AcademicAccreditations from "./components/AcademicAccreditations";
-
+import TabbedAwards from "./components/TabbedAwards";
 
 
 function App() {
@@ -31,8 +31,7 @@ function App() {
         <Partnerships />
         <StatisticsAndNumbers />
         <NewsSection />
-        <Rewards/>
-      <AcademicAccreditations />
+        <TabbedAwards/>
         <KAUContacts />
         <Footer />
       </div>
