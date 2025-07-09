@@ -22,8 +22,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  font-size: 100%;
-  font-family: unset;
+  font-family: 'Cairo';
 }
 
 /* ✅ وراثة نوع الخط فقط */
@@ -31,27 +30,24 @@ body.apply-accessibility *:not(.accessibility-container *):not(.access-button *)
   font-family: inherit !important;
 }
 
-/* ✅ وراثة الحجم فقط عند تفعيل الحجم */
-body.font-100.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
-  font-size: inherit !important;
-}
-body.font-150.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
-  font-size: inherit !important;
-}
-body.font-200.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
-  font-size: inherit !important;
+/* ✅ حجم خفيف */
+body.apply-accessibility.font-xs *:not(.accessibility-container *):not(.access-button *) {
+  font-size: clamp(0.95em, 1em, 1.05em) !important;
 }
 
-/* ✅ كلاس الحجم */
-body.font-100.apply-accessibility {
-  font-size: 100% !important;
+
+body.apply-accessibility.font-md *:not(.accessibility-container *):not(.access-button *) {
+  font-size: clamp(0.95em, 1.1em, 1.3em) !important;
 }
-body.font-150.apply-accessibility {
-  font-size: 150% !important;
+
+
+/* ✅ حجم كبير */
+/* ✅ حجم كبير (أخف شوي من السابق) */
+body.apply-accessibility.font-xl *:not(.accessibility-container *):not(.access-button *) {
+  font-size: clamp(1.03em, 1.15em, 1.3em) !important;
 }
-body.font-200.apply-accessibility {
-  font-size: 200% !important;
-}
+
+
 
 /* ✅ كلاس نوع الخط */
 body.font-cairo.apply-accessibility {
