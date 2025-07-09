@@ -60,56 +60,69 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <div className="navbar-container">
-        {/* ✅ يمين: الشعار */}
-        <div className="navbar-right">
-          <img src="/KAU_1.png" alt="KAU Logo" className="logo-img" />
+    <>
+      <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+        <div className="navbar-container">
+          {/* ✅ يمين: الشعار */}
+          <div className="navbar-right">
+            <img src="/KAU_1.png" alt="KAU Logo" className="logo-img preserve-image" />
+          </div>
 
+          {/* ✅ وسط: الروابط */}
+          <div className="navbar-center">
+            <div className="nav-links">
+              {navItems.map((item, idx) => (
+                <a key={idx} href="#">
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* ✅ يسار: البحث واللغة والقائمة */}
+          <div className="navbar-left" ref={menuRef}>
+            <SearchBar isScrolled={isScrolled} />
+            <span
+              className={`lang-btn ${isScrolled ? "dark" : ""}`}
+              onClick={() => setLanguage(isArabic ? "en" : "ar")}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") setLanguage(isArabic ? "en" : "ar");
+              }}
+            >
+              {isArabic ? "English" : "العربية"}
+            </span>
+            <img
+              src={isScrolled ? "/menu_black.png" : "/menu.png"}
+              alt="Menu"
+              className="icon-img preserve-image" 
+              onClick={() => setShowMenu(true)}
+            />
+          </div>
         </div>
+      </nav>
 
-        {/* ✅ وسط: الروابط */}
-        <div className="navbar-center">
-          <div className="nav-links">
-            {navItems.map((item, idx) => (
-              <a key={idx} href="#">
+      {/* ✅ المنيو العلوية مع صورة خلفية */}
+      {showMenu && (
+        <div className="top-menu">
+          <button className="close-btn" onClick={() => setShowMenu(false)}>
+            ×
+          </button>
+          <div className="top-menu-items">
+            {sideItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="top-menu-item"
+                onClick={() => setShowMenu(false)}
+              >
                 {item}
-              </a>
+              </div>
             ))}
           </div>
         </div>
-
-        {/* ✅ يسار: البحث واللغة والقائمة */}
-        <div className="navbar-left" ref={menuRef}>
-          <SearchBar isScrolled={isScrolled} />
-          <button
-            className={`lang-btn ${isScrolled ? "dark" : ""}`}
-            onClick={() => setLanguage(isArabic ? "en" : "ar")}
-          >
-            {isArabic ? "English" : "العربية"}
-          </button>
-          <img
-            src={isScrolled ? "/menu-black.png" : "/menu.png"}
-            alt="Menu"
-            className="icon-img"
-            onClick={() => setShowMenu(!showMenu)}
-          />
-          {showMenu && (
-            <div className={`dropdown-menu ${isArabic ? "rtl" : "ltr"}`}>
-              {sideItems.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="dropdown-item"
-                  onClick={() => setShowMenu(false)}
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </nav>
+      )}
+    </>
   );
 };
 
