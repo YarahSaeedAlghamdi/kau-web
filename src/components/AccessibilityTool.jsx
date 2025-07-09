@@ -11,7 +11,13 @@ import adhdIcon from '../assets/distraction.png';
 import epilepsyIcon from '../assets/epilepsy.png';
 
 const AccessibilityTools = () => {
-  const fontSizes = ['font-100', 'font-150', 'font-200'];
+  const fontSizes = ['font-xs', 'font-md', 'font-xl'];
+  const fontLabels = {
+    'font-xs': 'خفيف',
+    'font-md': 'متوسط',
+    'font-xl': 'كبير',
+  };
+
   const fontFamilies = ['font-cairo', 'font-tajawal', 'font-dyslexic'];
   const contrastModes = ['', 'contrast-high', 'contrast-low', 'grayscale'];
 
@@ -26,7 +32,6 @@ const AccessibilityTools = () => {
 
   const contrastClass = contrastModes[contrastIndex];
 
-  // ✅ نفعّل الوراثة فقط بعد أول تعديل بالحجم أو نوع الخط
   const ensureAccessibilityClass = () => {
     if (!document.body.classList.contains('apply-accessibility')) {
       document.body.classList.add('apply-accessibility');
@@ -34,15 +39,17 @@ const AccessibilityTools = () => {
   };
 
   useEffect(() => {
-    document.body.classList.remove('font-100', 'font-150', 'font-200');
-    document.body.classList.add(fontSizes[fontSizeIndex]);
-    ensureAccessibilityClass();
+    document.body.classList.remove('font-xs', 'font-md', 'font-xl');
+    if (document.body.classList.contains('apply-accessibility')) {
+      document.body.classList.add(fontSizes[fontSizeIndex]);
+    }
   }, [fontSizeIndex]);
 
   useEffect(() => {
     document.body.classList.remove('font-cairo', 'font-tajawal', 'font-dyslexic');
-    document.body.classList.add(fontFamilies[fontFamilyIndex]);
-    ensureAccessibilityClass();
+    if (document.body.classList.contains('apply-accessibility')) {
+      document.body.classList.add(fontFamilies[fontFamilyIndex]);
+    }
   }, [fontFamilyIndex]);
 
   useEffect(() => {
@@ -73,10 +80,12 @@ const AccessibilityTools = () => {
   };
 
   const cycleFontSize = () => {
+    ensureAccessibilityClass();
     setFontSizeIndex((prev) => (prev + 1) % fontSizes.length);
   };
 
   const cycleFontFamily = () => {
+    ensureAccessibilityClass();
     setFontFamilyIndex((prev) => (prev + 1) % fontFamilies.length);
   };
 
@@ -105,8 +114,8 @@ const AccessibilityTools = () => {
   };
 
   const resetAll = () => {
-    setFontSizeIndex(0);
-    setFontFamilyIndex(0);
+    setFontSizeIndex(0); // font-xs
+    setFontFamilyIndex(0); // font-cairo
     setContrastIndex(0);
     setCursorLarge(false);
     setHighlightLinks(false);
@@ -114,14 +123,16 @@ const AccessibilityTools = () => {
     speechSynthesis.cancel();
 
     document.body.classList.remove(
-      'font-150', 'font-200',
+      'font-md', 'font-xl',
       'contrast-high', 'contrast-low', 'grayscale',
       'highlighted-links',
       'font-tajawal', 'font-dyslexic',
       'apply-accessibility'
     );
-    document.body.classList.add('font-100', 'font-cairo');
+
+    document.body.classList.add('font-xs', 'font-cairo');
     document.querySelectorAll('img').forEach(img => img.style.display = '');
+    document.body.style.cursor = 'auto';
   };
 
   const tools = [
@@ -175,7 +186,7 @@ const AccessibilityTools = () => {
                   {tool.id === "fontSize" && (
                     <div className="font-buttons-wrapper">
                       <button onClick={(e) => { e.stopPropagation(); cycleFontSize(); }}>
-                        {fontSizes[fontSizeIndex].split('-')[1]}%
+                        {fontLabels[fontSizes[fontSizeIndex]]}
                       </button>
                     </div>
                   )}
