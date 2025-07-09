@@ -1,35 +1,65 @@
-/* src/components/HomeSections.css */
-:root {
-  /* KAU-brand greens */
-  --clr-primary:   #006837;   /* the deep tower green */
-  --clr-secondary: #8BC34A;   /* the lighter leaf green */
-
-  /* neutrals */
-  --clr-light:     rgba(255,255,255,0.9);
-  --clr-bg:        #F2F6F2;   /* very pale green background */
-  --clr-dark-text: #212121;
-  --clr-muted:     #555;
+/* ── Container & Panes ───────────────────────────────── */
+.split-flex {
+  background-color: #daffdd;
+  position: relative;
+  width: 100%;
+  height: 400px;   /* keep fixed height */
+  overflow: hidden; /* ensure nothing spills out */
 }
-
-/* page-wide background */
-body {
-  background: var(--clr-bg);
+/* ── Overlay with section info ─────────────────────────── */
+.split-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none; /* clicks pass through */
+}
+.info-title {
+  font-size: 2rem;
   margin: 0;
-  font-family: sans-serif;
+  color: #006837;
+}
+.info-sub {
+  font-size: 1rem;
+  margin: 0.5rem 0 0;
+  color: #006837;
 }
 
-/* section wrapper */
+.pane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;    /* ⬅️ add this */
+  box-sizing: border-box;
+}
+
+/* pink left half */
+.pane-left  { background: rgb(86, 185, 124); }
+/* blue right half */
+.pane-right { background: rgb(86, 185, 124); }
+
+/* ── Inner Section (news/events) ───────────────────────── */
 .hs-section {
-  max-width: 1100px;
-  margin: 0 auto 4rem;
-  padding: 3rem 1rem;
+  width: 100%;
+  height: 100%;      /* ⬅️ fill the pane’s height */
+  overflow-y: auto;  /* ⬅️ allow vertical scroll if needed */
+  box-sizing: border-box;
+  padding: 2rem 1rem;
 }
 
-/* headings */
+/* ── Shared cards styles ───────────────────────────────── */
 .hs-heading {
   position: relative;
   text-align: center;
-  color: var(--clr-primary);
+  color: #006837;
   font-size: 2.5rem;
   margin-bottom: 2.5rem;
   padding-bottom: 0.5rem;
@@ -37,11 +67,9 @@ body {
 .hs-heading::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 4px;
-  background: var(--clr-secondary);
+  bottom: 0; left: 50%;
+  width: 0; height: 4px;
+  background: #8BC34A;
   border-radius: 2px;
   transition: width 0.35s ease, left 0.35s ease;
 }
@@ -49,21 +77,17 @@ body {
   width: 60px;
   left: calc(50% - 30px);
 }
-
-/* grid layout */
 .hs-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
 }
-
-/* cards */
 .hs-card {
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  background: var(--clr-light);
-  border: 1px solid var(--clr-secondary);
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #8BC34A;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
@@ -74,8 +98,6 @@ body {
   transform: translateY(-6px);
   box-shadow: 0 15px 25px rgba(0,0,0,0.1);
 }
-
-/* image container */
 .hs-img-wrap {
   width: 100%;
   aspect-ratio: 3/2;
@@ -90,29 +112,26 @@ body {
 .hs-card:hover .hs-img-wrap img {
   transform: scale(1.08);
 }
-
-/* content */
 .hs-content {
   padding: 1.25rem;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .hs-date {
   font-size: 0.9rem;
-  color: var(--clr-muted);
+  color: #555;
   margin-bottom: 0.75rem;
 }
 .hs-title {
   font-size: 1.2rem;
-  color: var(--clr-dark-text);
+  color: #212121;
   line-height: 1.35;
 }
 
-/* events section override */
+/* ── Events pane override ───────────────────────────────── */
 .events-bg {
-  background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary));
+  background: linear-gradient(135deg, #006837, #d4ffa3, #006837);
   border-radius: 20px;
   padding-bottom: 3rem;
 }
@@ -126,3 +145,21 @@ body {
   background: rgba(255,255,255,0.95);
   border-color: rgba(255,255,255,0.6);
 }
+
+/* ── Responsive: stack on small screens ─────────────────── */
+@media (max-width: 600px) {
+  .split-flex {
+    height: auto;           /* let content dictate height */
+  }
+  .pane {
+    position: relative;
+    width: 100% !important;
+    height: auto;           /* allow inner section to expand */
+    clip-path: none !important;
+  }
+  .hs-section {
+    height: auto;
+    overflow: visible;
+  }
+}
+
