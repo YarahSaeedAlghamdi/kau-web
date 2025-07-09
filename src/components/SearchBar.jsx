@@ -1,33 +1,46 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./SearchBar.css";
 
-
 const SearchBar = ({ isScrolled }) => {
-  const [showSearch, setShowSearch] = useState(false);
+  const [showBar, setShowBar] = useState(false);
   const [query, setQuery] = useState("");
 
+  const handleSearchClick = () => {
+    setShowBar(true);
+  };
+
+  const handleCloseClick = () => {
+    setShowBar(false);
+    setQuery("");
+  };
+
   return (
-    <div className="search-container">
+    <>
       <img
         src={isScrolled ? "/search-black.png" : "/search.png"}
         alt="Search"
         className="icon-img"
-        onClick={() => setShowSearch(true)}
+        onClick={handleSearchClick}
+        style={{ cursor: "pointer" }}
       />
 
-      {showSearch && (
-        <div className="search-box">
-          <button className="search-btn">بحث</button>
-          <input
-            type="text"
-            placeholder="ابحث هنا"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button className="close-btn" onClick={() => setShowSearch(false)}>✕</button>
+      {showBar && (
+        <div className="search-bar-wrapper">
+          <div className="search-bar-container">
+            <button className="close-btn" onClick={handleCloseClick}>✖</button>
+            
+            <input
+              type="text"
+              className="search-input"
+              placeholder="ابحث هنا"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button className="search-btn">بحث</button>
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
