@@ -1,7 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./StatisticsAndNumbers.css";
 
 const statsGroups = [
+  [
+    { value: "1", label1: "محليًا في", label2: "الاستدامة" },
+    { value: "5", label1: "عربيًا" },
+    { value: "143", label1: "عالميًا" },
+    { value: "267", label1: "طالب حاصل على", label2: "جوائز محلية ودولية" },
+  ],
   [
     { value: "117,096", label1: "إجمالي عدد طلاب", label2: "الجامعة" },
     { value: "25%", label1: "نسبة الطلاب من", label2: "ذوي الإعاقة" },
@@ -14,17 +20,26 @@ const statsGroups = [
     { value: "15", label1: "برنامج بحثي" },
     { value: "39", label1: "نادي طلابي" },
   ],
-  [
-    { value: "1", label1: "محليًا في", label2: "الاستدامة" },
-    { value: "5", label1: "عربيًا" },
-    { value: "143", label1: "عالميًا" },
-    { value: "267", label1: "طالب حاصل على", label2: "جوائز محلية ودولية" },
-  ],
 ];
 
 export default function StatisticsAndNumbers() {
   const [currentGroup, setCurrentGroup] = useState(0);
   const [showStats, setShowStats] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setShowStats(true);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (showStats) {
@@ -35,23 +50,18 @@ export default function StatisticsAndNumbers() {
     }
   }, [showStats]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowStats(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
   const baseY = 420;
   const baseX = 450;
   const spacing = 200;
 
   return (
-    <div className="w-full py-20 flex flex-col items-center justify-center bg-white">
+    <div ref={containerRef} className="w-full py-20 flex flex-col items-center justify-center bg-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1200 800"
-        className="w-[90%] animate-draw"
+        className={`w-[90%] ${showStats ? "animate-draw" : ""}`}
         fill="none"
-        stroke="green"
+        stroke="#2F7A55"
         strokeWidth="1"
       >
         <path
@@ -66,36 +76,35 @@ export default function StatisticsAndNumbers() {
         {showStats && (
           <>
             <text
-              x={baseX - 400}
+              x={baseX - 430}
               y={baseY + 5}
               className="stats-title"
               textAnchor="end"
             >
               احصائيات وارقام
             </text>
+
             <line
-              x1={baseX - 190}
+              x1={baseX - 250}
               y1={baseY}
               x2={baseX + 3 * spacing}
               y2={baseY}
               className="stats-connector"
             />
-          </>
-        )}
 
-        {showStats && (
-          <g>
-            {[0, 1, 2].map((groupIndex, i) => (
-              <circle
-                key={i}
-                cx={baseX - 140 - i * 25}
-                cy={baseY}
-                r={5}
-                className="nav-circle"
-                onClick={() => setCurrentGroup(groupIndex)}
-              />
+            {statsGroups.map((_, i) => (
+              <g key={i}>
+                <title>الصفحة {i + 1}</title>
+                <circle
+                  cx={baseX - 250 + i * 20}
+                  cy={baseY}
+                  r={6}
+                  className={`nav-circle-svg ${currentGroup === i ? "active" : ""}`}
+                  onClick={() => setCurrentGroup(i)}
+                />
+              </g>
             ))}
-          </g>
+          </>
         )}
 
         {showStats && (
@@ -132,22 +141,6 @@ export default function StatisticsAndNumbers() {
           </g>
         )}
       </svg>
-
-      {showStats && (
-        <div className="flex gap-3 mt-4 mb-4">
-          {statsGroups.map((_, i) => (
-            <span
-              key={i}
-              onClick={() => setCurrentGroup(i)}
-              className={`w-5 h-5 rounded-full cursor-pointer transition-all duration-300 border-2 ${
-                currentGroup === i
-                  ? "bg-green-600 border-green-600 scale-110"
-                  : "bg-white border-gray-400"
-              }`}
-            ></span>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
