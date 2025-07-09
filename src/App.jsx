@@ -26,10 +26,10 @@ function App() {
       <div id="app-root" className="App">
         <NavBar />
         <Home />
-        <StatisticsAndNumbers />
         <UniversityMessage />
         <Achievements />
         <Partnerships />
+        <StatisticsAndNumbers />
         <NewsSection />
         <Rewards/>
       <AcademicAccreditations />

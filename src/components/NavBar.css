@@ -1,7 +1,7 @@
 .navbar {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 97%;
   padding: 12px 32px;
   display: flex;
   justify-content: space-between;
@@ -16,7 +16,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* روابط */
+/* الروابط الرئيسية */
 .nav-links {
   display: flex;
   gap: 24px;
@@ -24,7 +24,6 @@
   font-weight: bold;
 }
 
-/* لون الرابط */
 .nav-links a {
   color: white;
   text-decoration: none;
@@ -34,11 +33,12 @@
   color: black;
 }
 
-/* أيقونات */
+/* أيقونات البحث واللغة والقائمة */
 .nav-icons {
   display: flex;
   align-items: center;
   gap: 15px;
+  position: relative; /* مهم لظهور المنيو تحته */
 }
 
 .icon-img {
@@ -46,6 +46,7 @@
   height: 22px;
   object-fit: contain;
   transition: filter 0.3s ease;
+  cursor: pointer;
 }
 
 /* زر اللغة */
@@ -65,7 +66,51 @@
   border-color: black;
 }
 
-/* شعار */
+/* شعار الجامعة */
 .logo-img {
   height: 60px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  margin-top: 12px;
+  background-color: #333; /* ⬅ لون غامق أنيق (tailwind gray-800) */
+  color: white;
+  padding: 16px 0;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  min-width: 260px;  /* ⬅ عرض أكبر */
+  z-index: 9999;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dropdown-item {
+  padding: 20px 28px;       /* ⬅ مساحة داخلية أكبر */
+  cursor: pointer;
+  font-size: 20px;          /* ⬅ حجم خط أكبر */
+  font-weight: 600;
+  transition: background-color 0.3s, padding 0.2s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* خط فاصل ناعم */
+}
+
+.dropdown-item:last-child {
+  border-bottom: none; /* شيل الخط من آخر عنصر */
+}
+
+.dropdown-item:hover {
+  background-color: #374151; /* ⬅ لون hover متناسق */
+  padding-left: 34px;        /* ⬅ تأثير حركة خفيف */
+}
+
+
+/* دعم RTL و LTR حسب اللغة */
+.dropdown-menu.rtl {
+  right: 0;
+  left: auto;
+}
+
+.dropdown-menu.ltr {
+  left: 0;
+  right: auto;
 }

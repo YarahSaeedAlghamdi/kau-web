@@ -34,6 +34,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden; /* ✅ يمنع السكرول الأفقي */
+
   font-family: 'Cairo', sans-serif;
 }
 
@@ -68,6 +70,15 @@ body.font-dyslexic.apply-accessibility *:not(.accessibility-container *):not(.ac
 body.font-hyperlegible.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
   font-family: 'Atkinson Hyperlegible', sans-serif !important;
 }
+
+body.highlight-links.apply-accessibility a:not(.accessibility-container *):not(.access-button *) {
+  outline: 2px dashed #ff9800;
+  background-color: rgba(255, 235, 59, 0.15);
+  text-decoration: underline !important;
+}
+
+
+
 
 /* ✅ العناوين */
 h1 {
