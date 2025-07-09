@@ -1,3 +1,4 @@
+// Rewards.jsx
 import React, { useRef, useEffect } from "react";
 import "./Rewards.css";
 
@@ -33,6 +34,7 @@ export default function Rewards() {
   const scrollByAmount = (amount) => {
     const el = carouselRef.current;
     if (!el) return;
+    
     el.scrollLeft += amount;
     pauseThenResumeAutoScroll();
   };
@@ -82,16 +84,11 @@ export default function Rewards() {
 
   return (
     <section className="rewards-section">
-      <h2 className="rewards-heading">اعتمادات و جوائز</h2>
-      <p className="rewards-description">
-        تعد جامعة الملك عبدالعزيز من الجامعات الرائدة في التحول الرقمي، وتتبنى أفضل
-        الممارسات العالمية في التعليم الإلكتروني، وقد حصدت الجامعة عددًا من الجوائز
-        والاعتمادات المحلية والدولية تقديرًا لجهودها في تطوير بيئة تعليمية رقمية
-        متميزة ترتقي بجودة المخرجات التعليمية، وتدعم الابتكار والاستدامة في التعليم.
-      </p>
+      <h2 className="rewards-heading">الجوائز الأكاديمية</h2>
 
-      <div className="arrow left" onClick={() => scrollByAmount(-350)}>‹</div>
-      <div className="arrow right" onClick={() => scrollByAmount(350)}>›</div>
+<div className="arrow arrow-left" onClick={() => scrollByAmount(-350)}>‹</div>
+<div className="arrow arrow-right" onClick={() => scrollByAmount(350)}>›</div>
+
 
       <div className="rewards-carousel" ref={carouselRef}>
         <div className="reward-item">

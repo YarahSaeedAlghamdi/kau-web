@@ -31,6 +31,8 @@ function App() {
         <Partnerships />
         <StatisticsAndNumbers />
         <NewsSection />
+        <Rewards/>
+      <AcademicAccreditations />
         <KAUContacts />
         <Footer />
       </div>
