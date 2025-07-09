@@ -38,7 +38,7 @@
 }
 
 .stats-value {
-  font-size: 26px;           /* رفع حجم الرقم قليلاً */
+  font-size: 26px;           
   font-weight: bold;
   fill: black !important;
   stroke: none;

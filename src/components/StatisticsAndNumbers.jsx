@@ -45,10 +45,10 @@ export default function StatisticsAndNumbers() {
   const spacing = 200;
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-white">
+    <div className="w-full py-20 flex flex-col items-center justify-center bg-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1200 1200"
+        viewBox="0 0 1200 800"
         className="w-[90%] animate-draw"
         fill="none"
         stroke="green"
@@ -101,7 +101,7 @@ export default function StatisticsAndNumbers() {
         {showStats && (
           <g
             className={`stats-slider group-${currentGroup}`}
-            fontFamily="Segoe UI"
+            fontFamily="Cairo"
             textAnchor="middle"
             style={{ transformOrigin: "center" }}
           >
@@ -134,7 +134,7 @@ export default function StatisticsAndNumbers() {
       </svg>
 
       {showStats && (
-        <div className="flex gap-3 mt-8 mb-6">
+        <div className="flex gap-3 mt-4 mb-4">
           {statsGroups.map((_, i) => (
             <span
               key={i}
