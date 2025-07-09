@@ -1,70 +1,116 @@
 .navbar {
   display: flex;
-  justify-content: center; /* الوسط */
-  background-color: transparent;
-  padding: 16px 0; /* بدون padding يمين ويسار */
-  width: 100%;
-  position: absolute;
+  justify-content: center;
+  position: fixed; /* ثابت في الأعلى */
   top: 0;
   left: 0;
+  width: 100%;
   z-index: 1000;
+  padding: 16px 24px;
+  height: 80px; /* الحجم الطبيعي */
+  background-color: transparent;
+  transition: all 0.3s ease;
 }
 
 .navbar-container {
   display: flex;
+  width: 100%;
+  max-width: 1440px; /* أو 100% */
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 1440px;
-  padding: 0 24px; /* ✅ بس padding داخلي بسيط */
+  padding: 0 24px; /* تأكد إن ما تضيف مساحة زيادة يمين ويسار */
 }
 
-/* تقسيم الـ 3 أقسام */
-.navbar-left,
-.navbar-center,
-.navbar-right {
-  display: flex;
-  align-items: center;
+.icon-img {
+  width: 22px !important;
+  height: 22px !important;
+  transition: none !important;
+  filter: brightness(100%);
+  transition: filter 0.3s ease;
 }
 
-/* يسار */
-.navbar-left {
-  justify-content: flex-start;
-  gap: 16px;
-  flex: 1;
+/* عند النزول */
+.navbar.scrolled {
+  height: 60px; /* تصغير عند النزول */
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* وسط */
-.navbar-center {
-  justify-content: center;
-  flex: 2;
-}
-
-/* يمين */
-.navbar-right {
-  justify-content: flex-end;
-  flex: 1;
-}
-
-/* الشعار */
-.logo-img {
-  height: 60px;
-}
-
-/* الروابط */
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 40px; /* زد المسافة هنا حسب الحاجة */
   font-size: 15px;
   font-weight: bold;
 }
 
+
+/* ألوان الروابط في الوضع العادي */
 .nav-links a {
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.nav-links a.dark {
+/* ألوان الروابط عند النزول */
+.navbar.scrolled .nav-links a {
   color: black;
+}
+
+/* زر اللغة في الوضع العادي */
+.lang-btn {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* زر اللغة عند النزول */
+.navbar.scrolled .lang-btn {
+  color: black;
+}
+
+/* أيقونات القائمة في الوضع العادي */
+.navbar .icon-img {
+  filter: brightness(100%);
+}
+
+/* أيقونات القائمة عند النزول */
+.navbar.scrolled .icon-img {
+  filter: brightness(0);
+}
+
+.navbar-left,
+.navbar-center,
+.navbar-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* اليسار */
+.navbar-left {
+  flex: 0 0 auto; /* حجم ثابت بناءً على المحتوى */
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+/* الوسط */
+.navbar-center {
+  flex: 1 1 auto; /* ياخذ المساحة المتبقية */
+  justify-content: center;
+}
+
+/* اليمين */
+.navbar-right {
+  flex: 0 0 auto; /* عشان حجمها بناء على محتواها */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.logo-img {
+  height: 100px; /* حجم الشعار */
+  cursor: pointer;
+}
+
+/* عشان المحتوى ما يختفي تحت النافبار */
+main {
+  padding-top: 120px; /* زودته عشان الشعار كبير */
 }

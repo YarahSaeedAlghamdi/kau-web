@@ -56,26 +56,30 @@ const NavBar = () => {
     "الكليات",
     "المرافق",
     "المراكز",
-    "العمادات"
+    "العمادات",
   ];
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <div className="navbar-container">
+        {/* ✅ يمين: الشعار */}
         <div className="navbar-right">
-          <img src="/kau-logo.png" alt="KAU Logo" className="logo-img" />
+          <img src="/KAU_1.png" alt="KAU Logo" className="logo-img" />
+
         </div>
 
+        {/* ✅ وسط: الروابط */}
         <div className="navbar-center">
           <div className="nav-links">
             {navItems.map((item, idx) => (
-              <a key={idx} className={isScrolled ? "dark" : ""} href="#">
+              <a key={idx} href="#">
                 {item}
               </a>
             ))}
           </div>
         </div>
 
+        {/* ✅ يسار: البحث واللغة والقائمة */}
         <div className="navbar-left" ref={menuRef}>
           <SearchBar isScrolled={isScrolled} />
           <button
@@ -89,10 +93,9 @@ const NavBar = () => {
             alt="Menu"
             className="icon-img"
             onClick={() => setShowMenu(!showMenu)}
-            style={{ cursor: "pointer" }}
           />
           {showMenu && (
-            <div className="dropdown-menu">
+            <div className={`dropdown-menu ${isArabic ? "rtl" : "ltr"}`}>
               {sideItems.map((item, idx) => (
                 <div
                   key={idx}
@@ -107,7 +110,6 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
-
   );
 };
 
