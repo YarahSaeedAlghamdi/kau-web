@@ -1,3 +1,4 @@
+// Rewards.jsx
 import React, { useRef, useEffect } from "react";
 import "./Rewards.css";
 
@@ -33,6 +34,7 @@ export default function Rewards() {
   const scrollByAmount = (amount) => {
     const el = carouselRef.current;
     if (!el) return;
+    
     el.scrollLeft += amount;
     pauseThenResumeAutoScroll();
   };
@@ -89,9 +91,9 @@ export default function Rewards() {
         والاعتمادات المحلية والدولية تقديرًا لجهودها في تطوير بيئة تعليمية رقمية
         متميزة ترتقي بجودة المخرجات التعليمية، وتدعم الابتكار والاستدامة في التعليم.
       </p>
+<div className="arrow arrow-left" onClick={() => scrollByAmount(-350)}>‹</div>
+<div className="arrow arrow-right" onClick={() => scrollByAmount(350)}>›</div>
 
-      <div className="arrow left" onClick={() => scrollByAmount(-350)}>‹</div>
-      <div className="arrow right" onClick={() => scrollByAmount(350)}>›</div>
 
       <div className="rewards-carousel" ref={carouselRef}>
         <div className="reward-item">
