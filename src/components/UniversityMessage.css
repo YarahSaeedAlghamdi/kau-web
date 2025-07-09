@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0; /* رجعناه زي ما كان */
+  border-radius: 0; 
   overflow: hidden;
   /* margin removed to eliminate spacing */
 }
@@ -46,7 +46,7 @@
 
 .top-right-title {
   position: absolute;
-  top: 120px;
+  top: 100px;
   right: 20px;
   display: flex;
   align-items: center;
@@ -57,16 +57,18 @@
 
 .top-right-title h2 {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 400;
   margin: 5px;
   color: white;
-  line-height: 1.4;
+  line-height: 1.5;
+  
 }
 
 .vertical-bar {
-  width: 5px;
-  height: 40px;
+  width: 4px;
+  height: 55px;
   background-color: #60C16B;
+  border-radius: 2px ;
 }
 
 .content {
@@ -136,7 +138,4 @@
   z-index: 0;
 }
 
-.uniMsg-overlay {
-  position: relative;
-  z-index: 1;
-}
+
