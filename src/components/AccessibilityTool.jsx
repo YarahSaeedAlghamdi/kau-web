@@ -18,20 +18,17 @@ const AccessibilityTools = () => {
     'font-xl': 'كبير',
   };
   const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
-  const contrastModes = ['', 'contrast-high', 'contrast-low', 'grayscale'];
-  const saturationLevels = ['low', 'medium', 'high']; // ✅ جديد
+  const saturationLevels = ['low', 'medium', 'high'];
 
   const [isOpen, setIsOpen] = useState(false);
   const [flippedCard, setFlippedCard] = useState(null);
   const [fontSizeIndex, setFontSizeIndex] = useState(0);
   const [fontFamilyIndex, setFontFamilyIndex] = useState(0);
-  const [contrastIndex, setContrastIndex] = useState(0);
-  const [saturationIndex, setSaturationIndex] = useState(1); // ✅ جديد
+  const [saturationIndex, setSaturationIndex] = useState(1);
   const [cursorLarge, setCursorLarge] = useState(false);
   const [highlightLinks, setHighlightLinks] = useState(false);
   const [hideImages, setHideImages] = useState(false);
 
-  const contrastClass = contrastModes[contrastIndex];
   const saturationClass = `saturation-${saturationLevels[saturationIndex]}`;
 
   const ensureAccessibilityClass = () => {
@@ -55,15 +52,6 @@ const AccessibilityTools = () => {
   }, [fontFamilyIndex]);
 
   useEffect(() => {
-    document.body.classList.remove('contrast-high', 'contrast-low', 'grayscale');
-    if (contrastClass === 'grayscale') {
-      document.body.classList.add('grayscale');
-    } else if (contrastClass) {
-      document.body.classList.add(contrastClass);
-    }
-  }, [contrastClass]);
-
-  useEffect(() => {
     document.body.classList.remove('saturation-low', 'saturation-medium', 'saturation-high');
     if (document.body.classList.contains('apply-accessibility')) {
       document.body.classList.add(saturationClass);
@@ -75,7 +63,7 @@ const AccessibilityTools = () => {
   }, [cursorLarge]);
 
   useEffect(() => {
-    document.body.classList.toggle('highlighted-links', highlightLinks);
+    document.body.classList.toggle('highlight-links', highlightLinks);
   }, [highlightLinks]);
 
   useEffect(() => {
@@ -97,17 +85,17 @@ const AccessibilityTools = () => {
     setFontFamilyIndex((prev) => (prev + 1) % fontFamilies.length);
   };
 
-  const cycleContrast = () => {
-    setContrastIndex((prev) => (prev + 1) % contrastModes.length);
-  };
-
   const cycleSaturation = () => {
     ensureAccessibilityClass();
     setSaturationIndex((prev) => (prev + 1) % saturationLevels.length);
   };
 
   const toggleCursor = () => setCursorLarge(prev => !prev);
-  const toggleHighlight = () => setHighlightLinks(prev => !prev);
+  const toggleHighlight = () =>{
+      ensureAccessibilityClass(); // ✅ ضروري
+      setHighlightLinks(prev => !prev);
+  }
+
   const toggleImages = () => setHideImages(prev => !prev);
   const toggleFlip = (cardId) => setFlippedCard(prev => (prev === cardId ? null : cardId));
 
@@ -122,7 +110,6 @@ const AccessibilityTools = () => {
   const resetAll = () => {
     setFontSizeIndex(0);
     setFontFamilyIndex(0);
-    setContrastIndex(0);
     setSaturationIndex(1);
     setCursorLarge(false);
     setHighlightLinks(false);
@@ -130,14 +117,13 @@ const AccessibilityTools = () => {
     speechSynthesis.cancel();
 
     document.body.classList.remove(
-      'font-md', 'font-xl',
-      'contrast-high', 'contrast-low', 'grayscale',
-      'highlighted-links',
-      'font-tajawal', 'font-dyslexic',
+      'font-xs', 'font-md', 'font-xl',
+      'highlight-links', // ✅ الصحيح
+      'font-tajawal', 'font-dyslexic', 'font-hyperlegible',
       'saturation-low', 'saturation-high',
       'apply-accessibility'
     );
-    document.body.classList.add('font-xs', 'saturation-medium');
+    document.body.classList.add('saturation-medium');
     document.querySelectorAll('img').forEach(img => img.style.display = '');
     document.body.style.cursor = 'auto';
   };

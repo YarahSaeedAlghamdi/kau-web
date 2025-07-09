@@ -69,6 +69,15 @@ body.font-hyperlegible.apply-accessibility *:not(.accessibility-container *):not
   font-family: 'Atkinson Hyperlegible', sans-serif !important;
 }
 
+body.highlight-links.apply-accessibility a:not(.accessibility-container *):not(.access-button *) {
+  outline: 2px dashed #ff9800;
+  background-color: rgba(255, 235, 59, 0.15);
+  text-decoration: underline !important;
+}
+
+
+
+
 /* ✅ العناوين */
 h1 {
   font-size: 2em;
