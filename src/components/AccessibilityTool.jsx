@@ -18,7 +18,7 @@ const AccessibilityTools = () => {
     'font-xl': 'كبير',
   };
 
-  const fontFamilies = ['font-cairo', 'font-tajawal', 'font-dyslexic'];
+const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
   const contrastModes = ['', 'contrast-high', 'contrast-low', 'grayscale'];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -46,11 +46,12 @@ const AccessibilityTools = () => {
   }, [fontSizeIndex]);
 
   useEffect(() => {
-    document.body.classList.remove('font-cairo', 'font-tajawal', 'font-dyslexic');
+    document.body.classList.remove('font-tajawal', 'font-dyslexic', 'font-hyperlegible');
     if (document.body.classList.contains('apply-accessibility')) {
       document.body.classList.add(fontFamilies[fontFamilyIndex]);
     }
   }, [fontFamilyIndex]);
+
 
   useEffect(() => {
     document.body.classList.remove('contrast-high', 'contrast-low', 'grayscale');
@@ -70,10 +71,14 @@ const AccessibilityTools = () => {
   }, [highlightLinks]);
 
   useEffect(() => {
-    document.querySelectorAll('img').forEach(img => {
+    const root = document.getElementById("app-root");
+    if (!root) return;
+
+    root.classList.toggle('hide-images', hideImages);
+    root.querySelectorAll('img:not(.preserve-image)').forEach((img) => {
       img.style.display = hideImages ? 'none' : '';
     });
-  }, [hideImages]);
+  }, [hideImages]);
 
   const toggleFlip = (cardId) => {
     setFlippedCard(prev => (prev === cardId ? null : cardId));
@@ -130,7 +135,7 @@ const AccessibilityTools = () => {
       'apply-accessibility'
     );
 
-    document.body.classList.add('font-xs', 'font-cairo');
+    document.body.classList.add('font-xs');
     document.querySelectorAll('img').forEach(img => img.style.display = '');
     document.body.style.cursor = 'auto';
   };
@@ -150,18 +155,18 @@ const AccessibilityTools = () => {
     <div className={`accessibility-container ${isOpen ? 'open' : ''}`}>
       <div className={`access-sidebar ${isOpen ? 'open' : ''}`}>
         <button className="access-button" onClick={() => setIsOpen(!isOpen)}>
-          <img src={icon} alt="Accessibility" />
+          <img src={icon} alt="Accessibility" className="preserve-image" />
         </button>
 
         <div className={`mode-buttons-wrapper ${isOpen ? 'open' : ''}`}>
-          <button className="mode-button" title="نمط صوتي"><img src={audioIcon} alt="نمط صوتي" /></button>
-          <button className="mode-button" title="نمط قراءة"><img src={textIcon} alt="نمط قراءة" /></button>
-          <button className="mode-button" title="ضعف البصر"><img src={visionIcon} alt="ضعف البصر" /></button>
-          <button className="mode-button" title="نمط التوحد"><img src={autismIcon} alt="نمط التوحد" /></button>
-          <button className="mode-button" title="الإعاقة الحركية"><img src={mobilityIcon} alt="الإعاقة الحركية" /></button>
-          <button className="mode-button" title="عسر القراءة"><img src={dyslexiaIcon} alt="عسر القراءة" /></button>
-          <button className="mode-button" title="فرط الحركة"><img src={adhdIcon} alt="فرط الحركة" /></button>
-          <button className="mode-button" title="نمط الصرع"><img src={epilepsyIcon} alt="نمط الصرع" /></button>
+          <button className="mode-button" title="نمط صوتي"><img src={audioIcon} alt="نمط صوتي" className="preserve-image" /></button>
+          <button className="mode-button" title="نمط قراءة"><img src={textIcon} alt="نمط قراءة"className="preserve-image"  /></button>
+          <button className="mode-button" title="ضعف البصر"><img src={visionIcon} alt="ضعف البصر" className="preserve-image" /></button>
+          <button className="mode-button" title="نمط التوحد"><img src={autismIcon} alt="نمط التوحد" className="preserve-image" /></button>
+          <button className="mode-button" title="الإعاقة الحركية"><img src={mobilityIcon} alt="الإعاقة الحركية" className="preserve-image" /></button>
+          <button className="mode-button" title="عسر القراءة"><img src={dyslexiaIcon} alt="عسر القراءة" className="preserve-image" /></button>
+          <button className="mode-button" title="فرط الحركة"><img src={adhdIcon} alt="فرط الحركة" className="preserve-image" /></button>
+          <button className="mode-button" title="نمط الصرع"><img src={epilepsyIcon} alt="نمط الصرع" className="preserve-image" /></button>
         </div>
       </div>
 

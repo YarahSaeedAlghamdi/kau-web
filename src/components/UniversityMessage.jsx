@@ -11,17 +11,17 @@ const columns = [
     title: 'مجتمع أقوى بشراكات استراتيجية فعّالة',
     image: 'src/assets/images/UniMsg2.jpeg',
     content: 'نُعزّز دورنا في تنمية المجتمع من خلال مبادرات مبتكرة وشراكات محلية وعالمية تفتح آفاقًا جديدة، وتُسهم في تنويع مصادر التمويل وتعميق مفاهيم الاستدامة.'
-   },
+  },
   {
     title: 'قيادة تُلهم.. وتميّز يُحتذى به',
     image: 'src/assets/images/UniMsg3.jpeg',
-    content: 'نُطوّر قدراتنا القيادية والأكاديمية عبر منهجيات حديثة تدعم التفكير الابتكاري وتعزّز الأداء المؤسسي، لترتقي الجامعة بمكانتها محليًا وعالميًا.' 
-   },
+    content: 'نُطوّر قدراتنا القيادية والأكاديمية عبر منهجيات حديثة تدعم التفكير الابتكاري وتعزّز الأداء المؤسسي، لترتقي الجامعة بمكانتها محليًا وعالميًا.'
+  },
   {
     title: 'نحو جامعة ذكية.. خضراء.. مستدامة',
     image: 'src/assets/images/UniMsg4.jpeg',
     content: 'نستثمر مواردنا بكفاءة عالية، ونبني بنية تحتية متقدمة وخدمات عصرية وفق أعلى معايير الاستدامة، سعيًا نحو تطوير دائم وجامعة ذكية تنبض بالحياة.'
-   },
+  },
 ];
 
 export default function UniversityMessage() {
@@ -33,10 +33,10 @@ export default function UniversityMessage() {
         <div
           key={index}
           className={`column ${activeIndex === index ? 'active' : ''}`}
-          style={{ backgroundImage: `url(${col.image})` }}
           onMouseEnter={() => setActiveIndex(index)}
           onMouseLeave={() => setActiveIndex(null)}
         >
+          <img src={col.image} alt={col.title} className="background-img" />
           <div className="uniMsg-overlay">
             {(activeIndex === null || activeIndex === index) && (
               <div className="top-right-title">
@@ -56,8 +56,6 @@ export default function UniversityMessage() {
           <h1>رسالتنا في صناعة الغد</h1>
         </div>
       )}
-
-      
-    </div>
-  );
+    </div>
+  );
 }

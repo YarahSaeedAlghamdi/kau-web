@@ -7,6 +7,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ✅ استدعاء الخط الجديد من مجلد public */
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/AtkinsonHyperlegible-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ✅ الروابط */
 a {
   font-weight: 500;
   color: #646cff;
@@ -16,48 +27,46 @@ a:hover {
   color: #535bf2;
 }
 
+/* ✅ الخط الأساسي للموقع */
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  font-family: 'Cairo';
+  font-family: 'Cairo', sans-serif;
 }
 
-/* ✅ وراثة نوع الخط فقط */
-body.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
-  font-family: inherit !important;
-}
-
-/* ✅ حجم خفيف */
+/* ✅ حجم الخطوط */
 body.apply-accessibility.font-xs *:not(.accessibility-container *):not(.access-button *) {
   font-size: clamp(0.95em, 1em, 1.05em) !important;
 }
-
-
 body.apply-accessibility.font-md *:not(.accessibility-container *):not(.access-button *) {
   font-size: clamp(0.95em, 1.1em, 1.3em) !important;
 }
-
-
-/* ✅ حجم كبير */
-/* ✅ حجم كبير (أخف شوي من السابق) */
 body.apply-accessibility.font-xl *:not(.accessibility-container *):not(.access-button *) {
   font-size: clamp(1.03em, 1.15em, 1.3em) !important;
 }
 
-
-
-/* ✅ كلاس نوع الخط */
-body.font-cairo.apply-accessibility {
-  font-family: 'Cairo', sans-serif !important;
-}
+/* ✅ أنواع الخطوط – تطبق على body والعناصر بداخله */
 body.font-tajawal.apply-accessibility {
   font-family: 'Tajawal', sans-serif !important;
 }
 body.font-dyslexic.apply-accessibility {
   font-family: 'OpenDyslexic', sans-serif !important;
+}
+body.font-hyperlegible.apply-accessibility {
+  font-family: 'Atkinson Hyperlegible', sans-serif !important;
+}
+
+body.font-tajawal.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
+  font-family: 'Tajawal', sans-serif !important;
+}
+body.font-dyslexic.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
+  font-family: 'OpenDyslexic', sans-serif !important;
+}
+body.font-hyperlegible.apply-accessibility *:not(.accessibility-container *):not(.access-button *) {
+  font-family: 'Atkinson Hyperlegible', sans-serif !important;
 }
 
 /* ✅ العناوين */
@@ -78,7 +87,7 @@ label {
   font-size: 1em;
 }
 
-/* ✅ تفاعل الألوان */
+/* ✅ ألوان الوضع الفاتح */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
