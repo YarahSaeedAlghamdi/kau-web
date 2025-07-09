@@ -103,25 +103,35 @@ const NavBar = () => {
         </div>
       </nav>
 
-      {/* ✅ المنيو العلوية مع صورة خلفية */}
-      {showMenu && (
-        <div className="top-menu">
-          <button className="close-btn" onClick={() => setShowMenu(false)}>
-            ×
-          </button>
-          <div className="top-menu-items">
-            {sideItems.map((item, idx) => (
-              <div
-                key={idx}
-                className="top-menu-item"
-                onClick={() => setShowMenu(false)}
-              >
+    {/* ✅ القائمة الجانبية المفتوحة */}
+    {showMenu && (
+      <div className="top-menu">
+        <div className="top-menu-header">
+          {/* ✅ روابط الهيدر */}
+          <div className="top-menu-nav">
+            {navItems.map((item, idx) => (
+              <a key={idx} href="#" className="top-menu-nav-link">
                 {item}
-              </div>
+              </a>
             ))}
           </div>
+
+          {/* ✅ زر الإغلاق */}
+          <button className="close-btn" onClick={() => setShowMenu(false)}>×</button>
         </div>
-      )}
+
+        {/* ✅ القائمة الجانبية */}
+        <div className="top-menu-items">
+          {sideItems.map((item, idx) => (
+            <div key={idx} className="top-menu-item" onClick={() => setShowMenu(false)}>
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+
     </>
   );
 };

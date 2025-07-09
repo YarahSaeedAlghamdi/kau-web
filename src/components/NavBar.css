@@ -119,57 +119,110 @@ main {
   padding-top: 120px;
 }
 
-/* ✅ المنيو المنبثقة من الأعلى */
+/* ✅ المنيو المنبثقة من الأعلى بخلفية صورة */
 .top-menu {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.92);
+  background: url("/menuBar.jpg") center/cover no-repeat;
   z-index: 9999;
+
   display: flex;
   flex-direction: column;
-  padding: 40px 60px;
   animation: slideDown 0.4s ease forwards;
 }
 
-/* زر الإغلاق */
-.top-menu-header {
-  display: flex;
-  justify-content: flex-end;
+/* ✅ طبقة التغميق فوق الصورة */
+.top-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
 }
 
+/* ✅ العناصر فوق الخلفية */
+.top-menu-header,
+.top-menu-nav,
+.top-menu-items {
+  position: relative;
+  z-index: 2;
+}
+
+/* ✅ الهيدر: روابط + زر إغلاق */
+.top-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  flex-wrap: wrap;
+}
+
+/* ✅ زر الإغلاق */
 .close-btn {
   background: none;
   border: none;
   color: white;
   font-size: 2.5rem;
   cursor: pointer;
+  padding: 6px 14px;
 }
 
-/* عناصر القائمة */
+/* ✅ روابط الهيدر وسط الشاشة */
+.top-menu-nav {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  font-size: 22px;
+  font-weight: bold;
+  flex-wrap: wrap;
+  margin-right: 120px;           /* ✅ نفس المسافة حق اللي تحت */
+  margin-top: 80px;
+
+}
+
+.top-menu-nav a {
+  color: rgb(188, 188, 188);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.top-menu-nav a:hover {
+  color: #60C16B;
+}
+
+/* ✅ القائمة الجانبية يمين */
 .top-menu-items {
-  margin-top: 60px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  align-items: flex-end;
-  text-align: right;
+  align-items: flex-start;    /* ✅ يحط العناصر لليسار */
+  text-align: right;           /* ✅ يحاذي النص لليسار */
+  margin-right: 180px;          /* ✅ يحط مسافة من اليسار */
+  margin-left: auto;
+  width: fit-content;
 }
 
 .top-menu-item {
-  color: white;
-  font-size: 24px;
+  color: rgb(157, 156, 156);
+  font-size: 30px;
+  font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  padding: 0;
+  margin: 0;
+  direction: ltr;            /* ✅ يخلي النص يبدأ من اليسار */
 }
+
 
 .top-menu-item:hover {
   color: #60C16B;
 }
 
-/* ✅ حركة الظهور من الأعلى */
+/* ✅ حركة الظهور */
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
