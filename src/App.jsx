@@ -11,6 +11,8 @@ import App0 from './Tool_Main';
 import NavBar from "./components/NavBar";
 import KAUContacts from "./components/KAUContacts"; 
 import Home from './components/Home';
+import Rewards from './components/Rewards';
+import AcademicAccreditations from "./components/AcademicAccreditations";
 
 
 
@@ -24,10 +26,10 @@ function App() {
       <div id="app-root" className="App">
         <NavBar />
         <Home />
-        <StatisticsAndNumbers />
         <UniversityMessage />
         <Achievements />
         <Partnerships />
+        <StatisticsAndNumbers />
         <NewsSection />
         <KAUContacts />
         <Footer />

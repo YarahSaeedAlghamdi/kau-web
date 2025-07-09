@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./NavBar.css";
 import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState("ar");
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,18 @@ const NavBar = () => {
     document.documentElement.lang = language;
     document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
   }, [language]);
+
+  // ✅ يغلق القائمة عند الضغط بالخارج
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false);
+        
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const isArabic = language === "ar";
 
@@ -39,14 +53,20 @@ const NavBar = () => {
         "E-Services",
       ];
 
+  const sideItems = [
+    "إدارة الجامعة",
+    "الكليات",
+    "المرافق",
+    "المراكز",
+    "العمادات"
+  ];
+
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      {/* شعار */}
       <div className="logo-container">
         <img src="/kau-logo.png" alt="KAU Logo" className="logo-img" />
       </div>
 
-      {/* روابط التنقل */}
       <div className="nav-links">
         {navItems.map((item, idx) => (
           <a key={idx} className={isScrolled ? "dark" : ""} href="#">
@@ -55,8 +75,7 @@ const NavBar = () => {
         ))}
       </div>
 
-      {/* أدوات التنقل */}
-      <div className="nav-icons">
+      <div className="nav-icons" ref={menuRef}>
         <SearchBar isScrolled={isScrolled} />
         <button
           className={`lang-btn ${isScrolled ? "dark" : ""}`}
@@ -64,11 +83,29 @@ const NavBar = () => {
         >
           {isArabic ? "English" : "العربية"}
         </button>
+
         <img
           src={isScrolled ? "/menu-black.png" : "/menu.png"}
           alt="Menu"
           className="icon-img"
+          onClick={() => setShowMenu(!showMenu)}
+          style={{ cursor: "pointer" }}
         />
+
+        {/* ✅ القائمة تحت الزر */}
+        {showMenu && (
+          <div className="dropdown-menu">
+            {sideItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="dropdown-item"
+                onClick={() => setShowMenu(false)}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </nav>
   );

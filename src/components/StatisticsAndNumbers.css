@@ -23,7 +23,7 @@
 }
 
 .stats-circle {
-  stroke: #00b300;
+  stroke: #4FA578;
   stroke-dasharray: 6, 6;
   stroke-dashoffset: 0;
   fill: #f2f6f2
@@ -59,13 +59,13 @@
 .stats-title {
   font-size: 22px;
   font-weight: bold;
-  fill: black !important;
+  fill: #2F7A55 !important;
   font-family: 'Cairo', sans-serif;
   stroke: none;
 }
 
 .stats-connector {
-  stroke: #00b300;
+  stroke: #2F7A55;
   stroke-dasharray: 6, 6;
   stroke-dashoffset: 0;
   animation: dashMotion 2s linear infinite;

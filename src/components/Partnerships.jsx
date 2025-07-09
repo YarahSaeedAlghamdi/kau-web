@@ -1,3 +1,5 @@
+import './Partnerships.css';
+
 export default function Partners() {
   return (
     <div className="partners-wrapper">
