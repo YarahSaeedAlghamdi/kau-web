@@ -1,228 +1,109 @@
-/*.achievements-section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  text-align: center;
+.achievements-section {
+  background-color: #f2f6f2;
+  color: #fff;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  direction: rtl;
+  flex-direction: row-reverse;
+  font-family: 'Cairo', sans-serif;
+}
+
+.achievements-text {
+  flex: 1 1 400px;
+  max-width: 500px;
+  color: #1b1f22;
+  text-align: right;
+
 }
 
 .achievements-heading {
-  color: #2e5b2e;
-  font-size: 2rem;
+  color: #0F5A35;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.achievements-title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.achievements-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
   margin-bottom: 2rem;
+  color: #333333;
 }
 
-.achievements-cards {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.achievement-card {
-  position: relative;
-  width: 250px;
-  height: 350px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.achievement-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0.7);
-}
-
-.achievement-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
+.achievements-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background-color: #0F5A35;
   color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-
-*/
-/*
-.achievements-section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-.achievements-heading {
-  color: #2e5b2e;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.achievements-cards {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.achievement-card {
-  position: relative;
-  width: 250px;
-  height: 350px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
   text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s ease;
-}
-
-.achievement-card:hover {
-  transform: scale(1.05);
-}
-
-.achievement-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0.7);
-}
-
-.achievement-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 1rem;
   font-weight: bold;
-  text-align: center;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-*/
-.achievements-section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
-  text-align: center;
+  transition: background 0.3s;
 }
 
-.achievements-heading {
-  color: #2e5b2e;
-  font-size: 2.2rem;
-  margin-bottom: 2.5rem;
-  letter-spacing: 1px;
-}
-
-.achievements-cards {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.achievement-card {
-  position: relative;
-  width: 260px;
-  height: 370px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.achievements-button:hover,
+.achievements-button:focus,
+.achievements-button:active {
+  background-color: #60C16B;
+  color: white;
   text-decoration: none;
-  color: inherit;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
-  opacity: 0;
-  transform: scale(0.95) translateY(30px);
-  animation: fadeInScale 0.6s forwards;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(4px);
 }
 
-.achievement-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.achievement-card:nth-child(2) {
-  animation-delay: 0.3s;
-}
-.achievement-card:nth-child(3) {
-  animation-delay: 0.5s;
+.achievements-image {
+  flex: 1 1 500px;
+  max-width: 600px;
+  height: 100%; /* ✅ تأكد إن الارتفاع موجود */
 }
 
-.achievement-card:hover {
-  transform: scale(1.08) rotate(1deg);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
-  filter: brightness(1.05);
+.achievements-image .swiper {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* ✅ تحديد نسبة أبعاد ثابتة للمربع */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
 }
 
-.achievement-card img {
+.achievements-image .swiper-slide {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  display: flex;
+}
+
+.achievements-image .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ الصورة تغطي المربع */
   display: block;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  border-radius: 12px;
 }
 
-.achievement-card:hover img {
-  transform: scale(1.1);
-  filter: blur(1px) brightness(0.9);
+
+.achievements-image .swiper-button-next,
+.achievements-image .swiper-button-prev {
+  color: #60C16B !important; 
+  
 }
 
-.achievement-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  padding: 12px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  backdrop-filter: blur(2px);
+
+.achievements-image .swiper-button-next::after,
+.achievements-image .swiper-button-prev::after {
+  font-size: 50px;
 }
 
-@keyframes fadeInScale {
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-.achievements-section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-.achievements-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect x='50' y='0' width='100' height='100' stroke='%232e5b2e' fill='none' stroke-width='2'/%3E%3Crect x='0' y='50' width='100' height='100' stroke='%232e5b2e' fill='none' stroke-width='2'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  opacity: 0.1;
-  z-index: -1;
+
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #ffffff;
 }

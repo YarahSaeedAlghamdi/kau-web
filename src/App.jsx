@@ -26,8 +26,8 @@ function App() {
       <div id="app-root" className="App">
         <NavBar />
         <Home />
-        <UniversityMessage />
         <Achievements />
+        <UniversityMessage />
         <Partnerships />
         <StatisticsAndNumbers />
         <NewsSection />
