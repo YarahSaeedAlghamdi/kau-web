@@ -3,7 +3,7 @@ import "./StatisticsAndNumbers.css";
 
 const statsGroups = [
   [
-    { value: "117096", label1: "إجمالي عدد طلاب", label2: "الجامعة" },
+    { value: "117,096", label1: "إجمالي عدد طلاب", label2: "الجامعة" },
     { value: "25%", label1: "نسبة الطلاب من", label2: "ذوي الإعاقة" },
     { value: "1460", label1: "عدد المستفيدين من", label2: "خدمات الإسكان" },
     { value: "35", label1: "كلية" },
