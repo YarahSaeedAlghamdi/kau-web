@@ -14,18 +14,25 @@
 }
 
 .tab {
-  padding: 12px 24px;
-  background-color: white;
-  border: 2px solid #00664f;
-  border-radius: 30px;
-  color: #00664f;
+padding: 14px 32px;
+  font-size: 18px;
   font-weight: bold;
+  border-radius: 30px;
+  border: 2px solid #00664f;
   cursor: pointer;
+  background-color: white;
+  color: #00664f;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   transition: all 0.3s ease;
 }
 
 .tab:hover {
-  background-color: #e0f2f1;
+  background-color: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 102, 79, 0.2);
+
 }
 
 .tab.active {
