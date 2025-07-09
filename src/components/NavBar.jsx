@@ -65,7 +65,7 @@ const NavBar = () => {
         <div className="navbar-container">
           {/* ✅ يمين: الشعار */}
           <div className="navbar-right">
-            <img src="/KAU_1.png" alt="KAU Logo" className="logo-img" />
+            <img src="/KAU_1.png" alt="KAU Logo" className="logo-img preserve-image" />
           </div>
 
           {/* ✅ وسط: الروابط */}
@@ -96,7 +96,7 @@ const NavBar = () => {
             <img
               src={isScrolled ? "/menu_black.png" : "/menu.png"}
               alt="Menu"
-              className="icon-img"
+              className="icon-img preserve-image" 
               onClick={() => setShowMenu(true)}
             />
           </div>
