@@ -13,7 +13,7 @@ export default function Partners() {
                 href="https://ic.kau.edu.sa/Default-983-ar"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: 'none', color: 'inherit' }}
+                //style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 التعاون الدولي
               </a>
@@ -25,7 +25,7 @@ export default function Partners() {
                 href="https://www.kau.edu.sa/Content-0-AR-285355"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: 'none', color: 'inherit' }}
+                //style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 الاعتمادات الأكاديمية
               </a>
@@ -37,7 +37,7 @@ export default function Partners() {
                 href="https://kau.edu.sa/Content-0-AR-285353"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: 'none', color: 'inherit' }}
+                //style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 المسؤولية المجتمعية
               </a>

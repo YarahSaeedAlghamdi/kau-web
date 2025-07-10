@@ -101,23 +101,25 @@ const NavBar = () => {
 
           <div className="navbar-left" ref={menuRef}>
             <SearchBar isScrolled={isScrolled} />
-            <span
-              className={`lang-btn ${isScrolled ? "dark" : ""}`}
-              onClick={() => setLanguage(isArabic ? "en" : "ar")}
-              role="button"
-              tabIndex={0}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") setLanguage(isArabic ? "en" : "ar");
-              }}
-            >
-              {isArabic ? "English" : "العربية"}
-            </span>
-            <img
-              src={isScrolled ? "/menu_black.png" : "/menu.png"}
-              alt="Menu"
-              className="icon-img preserve-image"
-              onClick={() => setShowMenu(true)}
-            />
+  {/* زر اللغة */}
+  <button
+    className={`lang-btn ${isScrolled ? "dark" : ""}`}
+    onClick={() => setLanguage(isArabic ? "en" : "ar")}
+  >
+    {isArabic ? "English" : "العربية"}
+  </button>
+           {/* زر القائمة الجانبية */}
+  <button
+    className="menu-btn"
+    onClick={() => setShowMenu(true)}
+    aria-label="فتح القائمة"
+  >
+    <img
+      src={isScrolled ? "/menu_black.png" : "/menu.png"}
+      alt="Menu"
+      className="icon-img preserve-image"
+    />
+  </button>
           </div>
         </div>
       </nav>

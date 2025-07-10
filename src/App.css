@@ -41,8 +41,8 @@
 
 .highlighted-links a,
 .highlighted-links button {
-  outline: 3px dashed #ff0;
-  background-color: #333;
+  outline: 3px dashed rgb(0, 0, 0);
+  background-color: #000000;
   color: #fff;
 }
 

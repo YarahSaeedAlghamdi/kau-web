@@ -96,7 +96,7 @@
 }
 
 .hs-card {
-  max-width: 220%;     /* prevents cards from stretching wider */
+  max-width: 200%;     /* prevents cards from stretching wider */
   margin: 0 auto;       /* center them in their grid cell */
 } 
 .hs-card {
@@ -233,3 +233,75 @@
   }
 }
 
+
+.overlay-label {
+  position: absolute;
+  top: 50%;
+  right: 53%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+}
+.overlay-label2 {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.glass-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+/* allow the label to get hover events */
+.overlay-label,
+.overlay-label2 {
+  position: absolute;
+  top: 50%;
+  /* your existing left/right/transforms… */
+  /* remove pointer-events:none here */
+  z-index: 5;
+}
+
+/* make the label a clipping container */
+.glass-label {
+  position: relative;
+  overflow: hidden;
+  /* your existing styles… */
+}
+
+/* prepare the shine stripe, but don’t animate it yet */
+.glass-label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: skewX(-20deg);
+  filter: blur(2px);
+  /* no animation by default */
+}
+
+/* trigger the animation on hover */
+.glass-label:hover::before {
+  animation: shine 1s ease-in-out;
+}
+
+/* sweep it fully across */
+@keyframes shine {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}

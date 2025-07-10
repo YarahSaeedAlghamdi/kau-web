@@ -52,14 +52,23 @@
 .lang-btn {
   background: none;
   border: none;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
   color: white;
-  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.lang-btn.dark {
+  color: #000; /* عند التمرير */
+}
+
+.menu-btn {
+  background: none;
+  border: none;
   padding: 0;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .lang-btn:hover {
@@ -276,9 +285,6 @@ main {
     transform: translateY(0);
   }
 }
-
-
-
 
 
 .top-menu-items-wrapper {

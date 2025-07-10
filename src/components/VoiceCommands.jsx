@@ -3,6 +3,7 @@ import "./VoiceCommands.css";
 import voiceIcon from "../assets/images/voice-icon.png"; // أيقونة الميكروفون
 
 const commandsList = [
+  // تمرير لاعلى , تمرير لاسفل , 
   { command: "فوق", action: () => window.scrollBy({ top: -100, behavior: "smooth" }) },
   { command: "تحت", action: () => window.scrollBy({ top: 100, behavior: "smooth" }) },
   { command: "أعلى الصفحة", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
@@ -58,7 +59,7 @@ export default function VoiceCommands() {
   return (
     <>
       <button className="voice-btn" onClick={() => setShowList(!showList)}>
-        <img src={voiceIcon} alt="Voice Icon" className="voice-icon" />
+        <img src={voiceIcon} alt="Voice Icon" className="voice-icon preserve-image" />
       </button>
 
       {showList && (

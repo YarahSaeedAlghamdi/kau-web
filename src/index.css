@@ -72,11 +72,17 @@ body.font-hyperlegible.apply-accessibility *:not(.accessibility-container *):not
 }
 
 body.highlight-links.apply-accessibility a:not(.accessibility-container *):not(.access-button *) {
-  outline: 2px dashed #ff9800;
-  background-color: rgba(255, 235, 59, 0.15);
-  text-decoration: underline !important;
+  outline: 8px dashed yellow;
+  background-color: black;
+  color: yellow;
+  text-decoration: underline bold !important;
 }
-
+body.highlight-links.apply-accessibility button:not(.accessibility-container *):not(.access-button *):not(.voice-btn) {
+  outline: 8px dashed yellow;
+  background-color: black;
+  color: yellow;
+  text-decoration: underline bold !important;
+}
 
 
 
