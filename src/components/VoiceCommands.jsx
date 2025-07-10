@@ -59,7 +59,7 @@ export default function VoiceCommands() {
   return (
     <>
       <button className="voice-btn" onClick={() => setShowList(!showList)}>
-        <img src={voiceIcon} alt="Voice Icon" className="voice-icon" />
+        <img src={voiceIcon} alt="Voice Icon" className="voice-icon preserve-image" />
       </button>
 
       {showList && (
