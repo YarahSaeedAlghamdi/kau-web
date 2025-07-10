@@ -3,12 +3,11 @@ import "./VoiceCommands.css";
 import voiceIcon from "../assets/images/voice-icon.png"; // أيقونة الميكروفون
 
 const commandsList = [
-  // تمرير لاعلى , تمرير لاسفل , 
-  { command: "فوق", action: () => window.scrollBy({ top: -100, behavior: "smooth" }) },
-  { command: "تحت", action: () => window.scrollBy({ top: 100, behavior: "smooth" }) },
-  { command: "أعلى الصفحة", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-  { command: "أسفل الصفحه", action: () => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }) },
-  { command: "تحديث الصفحه", action: () => window.location.reload() },
+  { command: ["تمرير لأعلى", "فوق", "اطلع"], action: () => window.scrollBy({ top: -100, behavior: "smooth" }) },
+  { command: ["تمرير لأسفل", "تحت", "انزل"], action: () => window.scrollBy({ top: 100, behavior: "smooth" }) },
+  { command: ["أعلى الصفحة", "الاعلى"], action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
+  { command: ["أسفل الصفحة", "نهاية الصفحة", "الاسفل"], action: () => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }) },
+  { command: ["تحديث", "حدث الصفحة", "اعادة تحميل", "ريفريش"], action: () => window.location.reload() },
 ];
 
 export default function VoiceCommands() {
@@ -28,10 +27,12 @@ export default function VoiceCommands() {
 
     recog.onresult = (event) => {
       const transcript = event.results[event.results.length - 1][0].transcript.trim();
-      const matchedCommand = commandsList.find(cmd => transcript.includes(cmd.command));
+      const matchedCommand = commandsList.find(cmd =>
+        cmd.command.some(phrase => transcript.includes(phrase))
+      );
       if (matchedCommand) {
         matchedCommand.action();
-        setLastCommand(matchedCommand.command);
+        setLastCommand(matchedCommand.command[0]); // نعرض أول اسم كتمثيل
         playSound();
         setTimeout(() => setLastCommand(""), 2000);
       }
@@ -76,14 +77,14 @@ export default function VoiceCommands() {
                 key={i}
                 onClick={() => {
                   cmd.action();
-                  setLastCommand(cmd.command);
+                  setLastCommand(cmd.command[0]);
                   playSound();
                   setTimeout(() => setLastCommand(""), 2000);
                 }}
-                className={lastCommand === cmd.command ? "highlighted" : ""}
+                className={lastCommand === cmd.command[0] ? "highlighted" : ""}
               >
                 <span className="command-bullet">🗣️</span>
-                <strong>{cmd.command}</strong>
+                <strong>{cmd.command[0]}</strong>
               </li>
             ))}
           </ul>
