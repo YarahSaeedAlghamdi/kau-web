@@ -136,13 +136,14 @@
 }
 
 /* أسفل التذييل */
+/* أسفل التذييل */
 .footer-bottom {
   text-align: center; /* محاذاة النص في الوسط */
   border-top: 1px solid rgba(255, 255, 255, 0.2); /* خط فاصل علوي */
   margin-top: 2rem; /* مسافة من الأعلى */
   padding-top: 1rem; /* حشوة داخلية من الأعلى */
-  font-size: 1.3rem; /* حجم الخط أكبر */
-  color: #ffffff; /* لون الخط أبيض */
+  font-size: 0.9rem; /* ✅ حجم أصغر للنص */
+  color: #c5c5c5; /* لون الخط أبيض */
 }
 
 
@@ -164,3 +165,4 @@
 .subscribe button:hover {
   background-color: #0e8f6f;
 }
+

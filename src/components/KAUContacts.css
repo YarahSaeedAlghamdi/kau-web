@@ -34,7 +34,7 @@
 
 }
 .ad-item {
-  width: 250px;       /* حجم أكبر للإعلانات */
+  width: 290px;       /* حجم أكبر للإعلانات */
   height: 180px;
   overflow: hidden;
   border-radius: 0.75rem;
@@ -128,3 +128,24 @@
   transform: scaleX(1);
 }
 
+.social-names span {
+  font-size: 1.1rem;
+  color: #1f4037;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: inline-flex;        /* لضبط الأيقونة والاسم بجانب بعض */
+  align-items: center;         /* محاذاة عمودية */
+  flex-direction: row-reverse; /* يجعل الأيقونة على اليمين والاسم على اليسار */
+  gap: 0.4rem;                 /* مسافة بين الأيقونة والاسم */
+  margin-right: 3rem;        /* مسافة بين كل عنصر وآخر */
+    padding: 1rem 1;   /* يضيف مسافة بسيطة فوق وتحت */
+
+}
+
+.social-names span:hover {
+  color: #0e8f6f;
+}
+
+.social-names span i {
+  font-size: 1.2rem;
+}

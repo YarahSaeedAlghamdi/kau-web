@@ -13,12 +13,7 @@ const Footer = () => {
             اشترك
             <i className="bi bi-arrow-left"></i>
           </button>
-          <div className="social-icons">
-            <i className="bi bi-instagram" />
-            <i className="bi bi-linkedin" />
-            <i className="bi bi-snapchat" />
-            <i className="bi bi-twitter-x"></i>
-          </div>
+
         </div>
 
         {/* روابط */}
@@ -64,7 +59,15 @@ const Footer = () => {
       {/* الأسفل */}
       <div className="footer-bottom">
         <p>
+          
           سياسة النشر الإلكتروني | الشروط والاستخدام | سياسة الخصوصية | تواصل معنا
+        </p>
+
+
+             <p>
+          
+        
+          من تطوير  |  رناد تركستاني|جود السلمي |ياره الغامدي | سجى الحربي |ريفان باريان| رحمه عبيد| رزان السريحي |ابتسام الجدعاني |مها الظاهري 
         </p>
       </div>
     </footer>
