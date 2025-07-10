@@ -5,10 +5,7 @@ const SearchBar = ({ isScrolled }) => {
   const [showBar, setShowBar] = useState(false);
   const [query, setQuery] = useState("");
 
-  const handleSearchClick = () => {
-    setShowBar(true);
-  };
-
+  const handleSearchClick = () => setShowBar(true);
   const handleCloseClick = () => {
     setShowBar(false);
     setQuery("");
@@ -27,8 +24,10 @@ const SearchBar = ({ isScrolled }) => {
       {showBar && (
         <div className="search-bar-wrapper">
           <div className="search-bar-container">
-            <button className="close-btn" onClick={handleCloseClick}>✖</button>
-            
+            {/* ✖ أول عنصر */}
+            <button className="close-inline-btn" onClick={handleCloseClick}>✖</button>
+
+            {/* حقل الإدخال */}
             <input
               type="text"
               className="search-input"
@@ -36,6 +35,8 @@ const SearchBar = ({ isScrolled }) => {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
+
+            {/* زر البحث */}
             <button className="search-btn">بحث</button>
           </div>
         </div>
