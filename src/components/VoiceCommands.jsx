@@ -3,6 +3,7 @@ import "./VoiceCommands.css";
 import voiceIcon from "../assets/images/voice-icon.png"; // أيقونة الميكروفون
 
 const commandsList = [
+  // تمرير لاعلى , تمرير لاسفل , 
   { command: "فوق", action: () => window.scrollBy({ top: -100, behavior: "smooth" }) },
   { command: "تحت", action: () => window.scrollBy({ top: 100, behavior: "smooth" }) },
   { command: "أعلى الصفحة", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
