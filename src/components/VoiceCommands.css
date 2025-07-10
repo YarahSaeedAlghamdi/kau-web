@@ -1,0 +1,115 @@
+.voice-btn {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #00664f;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px 0 0 12px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.voice-btn:hover {
+  background: #004f3d;
+  box-shadow: -3px 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.voice-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Voice Command Panel */
+.voice-panel {
+  position: fixed;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border: 2px solid #00664f;
+  padding: 1.2rem;
+  border-radius: 16px;
+  z-index: 999;
+  width: 270px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+  animation: fadeInSlide 0.3s ease;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.voice-panel h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #00664f;
+  font-size: 20px;
+  border-bottom: 1px solid #d4d4d4;
+  padding-bottom: 8px;
+}
+
+.voice-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.voice-panel li {
+  margin-bottom: 12px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+  padding: 5px 8px;
+  border-radius: 8px;
+}
+
+.voice-panel li:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.command-bullet {
+  font-size: 16px;
+}
+
+/* Highlighted on voice match */
+.highlighted {
+  background-color: #d7f5eb;
+  border: 1px solid #0d9f85;
+}
+.toggle-mic {
+  background-color: #00664f;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.toggle-mic.on {
+  background-color: #b80000;
+}
+
+.toggle-mic:hover {
+  background-color: #004f3d;
+}

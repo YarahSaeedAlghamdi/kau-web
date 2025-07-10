@@ -14,13 +14,15 @@ import Home from './components/Home';
 import Rewards from './components/Rewards';
 import AcademicAccreditations from "./components/AcademicAccreditations";
 import TabbedAwards from "./components/TabbedAwards";
-
+import VoiceCommands from './components/VoiceCommands';
 
 function App() {
   return (
     <>
       {/* ✅ لوحة الوصول خارج المحتوى */}
       <App0 />
+      <VoiceCommands/>
+      
 
       {/* ✅ محتوى الموقع */}
       <div id="app-root" className="App">
