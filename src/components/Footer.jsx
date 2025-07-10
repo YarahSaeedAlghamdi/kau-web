@@ -10,7 +10,7 @@ const Footer = () => {
           <h3>اشترك في نشرتنا البريدية</h3>
           <input type="email" placeholder="أدخل بريدك الإلكتروني" />
           <button className="subscribe-button">
-            اشتراك
+            اشترك
             <i className="bi bi-arrow-left"></i>
           </button>
           <div className="social-icons">
@@ -71,4 +71,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer; 
