@@ -77,7 +77,7 @@ export default function NewsSection() {
       >
         <h3 className="info-title">📰 أخبار وفعاليات جامعة الملك عبدالعزيز</h3>
         <p className="info-sub">
-          استكشف أهم الأخبار والفعاليات هنا. انقر على أي جهة لمزيد من التفاصيل.
+          استكشف أهم الأخبار والفعاليات هنا !
         </p>
       </motion.div>
       {/* ——— EVENTS (left) —————————————————————————— */}
@@ -96,7 +96,13 @@ export default function NewsSection() {
     backgroundSize:    'cover',
     backgroundPosition:'center'
   }}
+ 
       >
+        {active === null && (
+          <div className="overlay-label">
+            <span className="glass-label">فعاليات</span>
+          </div>
+        )}
         {active === 'left' && (
           <div className="hs-section events-bg">
             <h2 className="hs-heading">فعاليات</h2>
@@ -134,6 +140,11 @@ export default function NewsSection() {
     backgroundPosition:'center'
   }}
       >
+        {active === null && (
+          <div className="overlay-label2">
+            <span className="glass-label">أخبار</span>
+          </div>
+        )}
         {active === 'right' && (
           <div className="hs-section events-bg news-bg">
             <h2 className="hs-heading">الأخبار العامة</h2>
