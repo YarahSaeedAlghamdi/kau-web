@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import techhub      from '../assets/images/techhub.jpg';
 import musicclub    from '../assets/images/musicclub.jpg';
 import summerschool from '../assets/images/summerschool.jpg';
+import leftBg  from '../assets/images/left-bg.jpg';
+import rightBg from '../assets/images/right-bg.jpg';
 import './NewsSection.css';
-
 const newsItems = [
   {
     img: 'https://cmsplus.kau.edu.sa/Images/124/In_news/1446/25-6-2025-inner.jpg',
@@ -45,6 +46,11 @@ export default function NewsSection() {
   const [active, setActive] = useState(null);
   const transition = { type: 'tween', duration: 0.5, ease: 'easeInOut' };
 
+  const infoVariants = {
+  visible: { opacity: 1 },
+  hidden:  { opacity: 0 }
+};
+
   const leftVariants = {
     initial:  { left: 0,     width: '50%', pointerEvents: 'auto', clipPath: 'polygon(0 0, 100% 0, 0 100%)' },
     expanded: { left: 0,     width: '100%',pointerEvents: 'auto', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' },
@@ -62,13 +68,18 @@ export default function NewsSection() {
   return (
     <section className="split-flex" onDoubleClick={() => setActive(null)}>
       {/* ——— Always-on “About” overlay ————————————————— */}
-      <div className="split-info">
+      <motion.div
+        className="split-info"
+        variants={infoVariants}
+        initial="visible"
+        animate={active ? "hidden" : "visible"}
+        transition={transition}
+      >
         <h3 className="info-title">📰 أخبار وفعاليات جامعة الملك عبدالعزيز</h3>
         <p className="info-sub">
           استكشف أهم الأخبار والفعاليات هنا. انقر على أي جهة لمزيد من التفاصيل.
         </p>
-      </div>
-
+      </motion.div>
       {/* ——— EVENTS (left) —————————————————————————— */}
       <motion.div
         className="pane pane-left"
@@ -79,7 +90,12 @@ export default function NewsSection() {
                 : active === 'right'  ? 'hidden'
                                       : 'initial' }
         transition={transition}
-        style={{ zIndex: active === 'left' ? 2 : 1 }}
+       style={{
+    zIndex: active === 'left' ? 2 : 1,
+    backgroundImage: `url(${leftBg})`,
+    backgroundSize:    'cover',
+    backgroundPosition:'center'
+  }}
       >
         {active === 'left' && (
           <div className="hs-section events-bg">
@@ -111,7 +127,12 @@ export default function NewsSection() {
                 : active === 'left'   ? 'hidden'
                                       : 'initial' }
         transition={transition}
-        style={{ zIndex: active === 'right' ? 2 : 1 }}
+        style={{
+    zIndex: active === 'right' ? 2 : 1,
+    backgroundImage: `url(${rightBg})`,
+    backgroundSize:    'cover',
+    backgroundPosition:'center'
+  }}
       >
         {active === 'right' && (
           <div className="hs-section events-bg news-bg">
