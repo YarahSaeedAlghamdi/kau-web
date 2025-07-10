@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './AccessibilityTool.css';
 import icon from '../assets/accessibility.svg';
-import audioIcon from '../assets/font-adjustment.png';
-import textIcon from '../assets/speaker-filled-audio-tool.png';
+import audioIcon from '../assets/font-adjustmen.png';
+import textIcon from '../assets/font-selection.png';
+import colorSet from '../assets/tint.png';
 import visionIcon from '../assets/target.png';
 import autismIcon from '../assets/view.png';
 import mobilityIcon from '../assets/disability.png';
 import dyslexiaIcon from '../assets/dyslexia.png';
 import adhdIcon from '../assets/distraction.png';
 import epilepsyIcon from '../assets/epilepsy.png';
+import Zoom from '../assets/zoom-in.png';
+import voice from '../assets/voice-assistant.png';
+import link from '../assets/link.png';
+import picture from '../assets/invisible.png';
+import reset from '../assets/circular.png';
 
 const AccessibilityTools = () => {
   const fontSizes = ['font-xs', 'font-md', 'font-xl'];
@@ -129,14 +135,14 @@ const AccessibilityTools = () => {
   };
 
   const tools = [
-    { name: "حجم الخط", icon: "🔠", id: "fontSize" },
-    { name: "نوع الخط", icon: "✍️", id: "fontType" },
-    { name: "تشبع الألوان", icon: "🎨", id: "colorContrast" },
-    { name: "تكبير المؤشر", icon: "🚩", id: "cursorSize" },
-    { name: "تمييز الروابط والأزرار", icon: "🔗", id: "linkHighlight" },
-    { name: "قراءة النص", icon: "🗣️", id: "textReader" },
-    { name: "إخفاء الصور", icon: "🖼️", id: "hideImages" },
-    { name: "استعادة الإعدادات", icon: "♻️", id: "resetAll" },
+    { name: "حجم الخط", icon: audioIcon, id: "fontSize" },
+    { name: "نوع الخط", icon: textIcon, id: "fontType" },
+    { name: "تشبع الألوان", icon: colorSet, id: "colorContrast" },
+    { name: "تكبير المؤشر", icon: Zoom, id: "cursorSize" },
+    { name: "تمييز الروابط والأزرار", icon: link, id: "linkHighlight" },
+    { name: "قراءة النص", icon: voice, id: "textReader" },
+    { name: "إخفاء الصور", icon: picture, id: "hideImages" },
+    { name: "استعادة الإعدادات", icon: reset, id: "resetAll" },
   ];
 
   return (
@@ -146,10 +152,8 @@ const AccessibilityTools = () => {
           <img src={icon} alt="Accessibility" className="preserve-image" />
         </button>
         <div className={`mode-buttons-wrapper ${isOpen ? 'open' : ''}`}>
-          <button className="mode-button" title="نمط صوتي"><img src={audioIcon} alt="نمط صوتي" /></button>
-          <button className="mode-button" title="نمط قراءة"><img src={textIcon} alt="نمط قراءة" /></button>
           <button className="mode-button" title="ضعف البصر"><img src={visionIcon} alt="ضعف البصر" /></button>
-          <button className="mode-button" title="نمط التوحد"><img src={autismIcon} alt="نمط التوحد" /></button>
+          <button className="mode-button" title="عمى الألون"><img src={autismIcon} alt="عمى الألوان" /></button>
           <button className="mode-button" title="الإعاقة الحركية"><img src={mobilityIcon} alt="الإعاقة الحركية" /></button>
           <button className="mode-button" title="عسر القراءة"><img src={dyslexiaIcon} alt="عسر القراءة" /></button>
           <button className="mode-button" title="فرط الحركة"><img src={adhdIcon} alt="فرط الحركة" /></button>
@@ -164,7 +168,7 @@ const AccessibilityTools = () => {
             <div key={tool.id} className="tool-card" onClick={() => toggleFlip(tool.id)}>
               <div className={`card-inner ${flippedCard === tool.id ? 'flipped' : ''}`}>
                 <div className="card-front">
-                  <span className="emoji">{tool.icon}</span>
+                  <img src={tool.icon} alt={tool.name} className="tool-icon" />
                   <span>{tool.name}</span>
                 </div>
                 <div className="card-back">
@@ -230,6 +234,7 @@ const AccessibilityTools = () => {
           ))}
         </div>
       </div>
+
     </div>
   );
 };
