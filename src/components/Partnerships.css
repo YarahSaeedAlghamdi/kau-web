@@ -16,6 +16,7 @@ body {
   margin: auto;
   padding: 20px;
   text-align: right;
+   padding-right: 220px;
 }
 
 .title {
@@ -23,6 +24,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 40px;
+  margin-right: -149px;
   color: #2e7d32;
   text-shadow: 1px 1px #ccc;
 }
@@ -64,8 +66,8 @@ li > span:hover {
 .partners-wrapper::before {
   content: "";
   position: absolute;
-  left: 90px;
-  top: 62%;
+  left: 160px;
+  top: 60%;
   transform: translateY(-50%);
   width: 300px; /* حجم الشعار */
   height: 300px;

@@ -24,14 +24,17 @@
 }
 
 .ads-grid {
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 6rem;
+  gap: 2rem; /* تم تقليل المسافة من 12rem إلى 2rem */
   justify-content: center;
   align-items: center;
+
+
 }
 .ad-item {
-  width: 450px;       /* حجم أكبر للإعلانات */
+  width: 250px;       /* حجم أكبر للإعلانات */
   height: 180px;
   overflow: hidden;
   border-radius: 0.75rem;

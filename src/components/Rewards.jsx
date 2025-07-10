@@ -86,8 +86,8 @@ export default function Rewards() {
     <section className="rewards-section">
       <h2 className="rewards-heading">الجوائز الأكاديمية</h2>
 
-<div className="arrow arrow-left" onClick={() => scrollByAmount(-350)}>‹</div>
-<div className="arrow arrow-right" onClick={() => scrollByAmount(350)}>›</div>
+<div className="arrow arrow-left" onClick={() => scrollByAmount(-350)}>›</div>
+<div className="arrow arrow-right" onClick={() => scrollByAmount(350)}>‹</div>
 
 
       <div className="rewards-carousel" ref={carouselRef}>
