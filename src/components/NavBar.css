@@ -48,10 +48,11 @@
   color: black;
 }
 
-/* ✅ اللغة ككلمة */.lang-btn {
+/* ✅ اللغة ككلمة */
+.lang-btn {
   background: none;
   border: none;
-  color: inherit;
+  color: white;
   font-size: 16px;
   cursor: pointer;
   margin: 0 10px;
@@ -284,9 +285,6 @@ main {
     transform: translateY(0);
   }
 }
-
-
-
 
 
 .top-menu-items-wrapper {
