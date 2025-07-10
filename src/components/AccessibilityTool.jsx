@@ -192,15 +192,19 @@ const AccessibilityTools = () => {
 
                   {tool.id === "colorContrast" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); cycleSaturation(); }}>
-                        {saturationLevels[saturationIndex] === 'low'
-                          ? 'منخفض'
-                          : saturationLevels[saturationIndex] === 'medium'
-                          ? 'عادي'
-                          : 'عالي'}
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        cycleSaturation();
+                      }}>
+                        {{
+                          low: 'عادي',
+                          medium: 'عالي',
+                          high: 'منخفض'
+                        }[saturationLevels[(saturationIndex + 1) % saturationLevels.length]]}
                       </button>
                     </div>
                   )}
+
                   {tool.id === "cursorSize" && (
                     <div className="font-buttons-wrapper">
                       <button onClick={(e) => { e.stopPropagation(); toggleCursor(); }}>
