@@ -160,14 +160,60 @@
   padding-bottom: 3rem;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);}
 .events-bg .hs-heading {
-  color: #050000;
+  color: #015d07;
 }
 .events-bg .hs-heading::after {
   background: #028f0b;
 }
+/* base card styling—no continuous shine */
 .events-bg .hs-card {
-  background: rgba(252, 252, 252, 0.95);
-  border-color: rgba(255,255,255,0.6);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: linear-gradient(
+    145deg,
+    #fdfdfd 0%,
+    #e5e5e5 50%,
+    #f9f9f9 100%
+  );
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* define the shine overlay but keep it hidden */
+.events-bg .hs-card::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: -75%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255,255,255,0)    30%,
+    rgba(255,255,255,0.4)  50%,
+    rgba(255,255,255,0)    70%
+  );
+  transform: rotate(45deg);
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* on hover: lift + show shine once */
+.events-bg .hs-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.events-bg .hs-card:hover::before {
+  opacity: 1;
+  animation: shine-sweep 1.2s ease-in-out;
+}
+
+@keyframes shine-sweep {
+  to { transform: rotate(45deg) translateX(150%); }
 }
 
 /* ── Responsive: stack on small screens ─────────────────── */
