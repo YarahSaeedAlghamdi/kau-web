@@ -12,8 +12,9 @@
 /* ✅ فقط منع وراثة الخط والحجم من body، بدون تخريب البنية */
 .accessibility-container,
 .accessibility-container * {
-  font-size: 14px !important;
+  font-size: 17px !important;
   font-family: 'Cairo', sans-serif !important;
+  
 }
 
 /* ✅ الشريط الجانبي */
@@ -118,15 +119,17 @@
   transform: translateY(-50%) translateX(0); /* ✅ توسيط مع ظهور */
 }
 
+
 /* ✅ العنوان */
 .access-title {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: bold;
   color: #525252;
   margin: 15px auto 20px auto;
   text-align: center;
   display: block;
 }
+
 /* ✅ شبكة الأدوات */
 .tools-grid {
   display: grid;
@@ -159,39 +162,38 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  flex-direction: column;         /* ✅ يخلي الأيقونة فوق والنص تحت */
+  align-items: center;            /* ✅ وسط أفقي */
+  justify-content: center;        /* ✅ وسط عمودي */
   backface-visibility: hidden;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 0.5px solid #0f5a3555;
   background-color: #f9f9f9;
   padding: 14px 18px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  font-size: 16px;
+  justify-content: flex-start !important;
+  gap: 5px;
+  font-size: 30px;
   font-weight: 500;
   box-sizing: border-box;
   overflow: hidden;
 }
 
-.card-front .emoji {
-  font-size: 24px;
-}
 
 .card-back {
   transform: rotateY(180deg);
   flex-direction: column;
   align-items: center;      /* ✅ وسط أفقي */
   justify-content: center;  /* ✅ وسط عمودي */
-  
-  font-size: 14px;
 }
 
 .card-back p {
-  font-size: 13px;
+  font-size: 20px;
   color: #555;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
+
 
 .card-back button {
   background: #e6e6e6;
@@ -203,13 +205,16 @@
   font-size: 15px;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  min-width: 100px;         /* ✅ ثبات الحجم */
+  min-width: 150px;         /* ✅ ثبات الحجم */
   text-align: center;
+  font-weight: bold;
+
 }
 
 .card-back button:hover {
   background-color: #d0d0d0;
 }
+
 
 .font-buttons-wrapper {
   display: flex;
@@ -218,15 +223,12 @@
   justify-content: center;
   align-items: center;
 }
-.card-back button {
-  font-weight: bold;
-  font-size: 15px;
-}
+
 
 
 .tool-icon {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   margin-bottom: 6px;
   object-fit: contain;
 }
