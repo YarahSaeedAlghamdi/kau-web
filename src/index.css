@@ -77,7 +77,12 @@ body.highlight-links.apply-accessibility a:not(.accessibility-container *):not(.
   color: yellow;
   text-decoration: underline bold !important;
 }
-
+body.highlight-links.apply-accessibility button:not(.accessibility-container *):not(.access-button *):not(.voice-btn) {
+  outline: 8px dashed yellow;
+  background-color: black;
+  color: yellow;
+  text-decoration: underline bold !important;
+}
 
 
 

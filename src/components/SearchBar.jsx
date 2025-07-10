@@ -13,13 +13,17 @@ const SearchBar = ({ isScrolled }) => {
 
   return (
     <>
-      <img
-        src={isScrolled ? "/search-black.png" : "/search.png"}
-        alt="Search"
-        className="icon-img preserve-image"
-        onClick={handleSearchClick}
-        style={{ cursor: "pointer" }}
-      />
+<button
+  onClick={handleSearchClick}
+  className="search-icon-btn"
+  aria-label="فتح البحث"
+>
+  <img
+    src={isScrolled ? "/search-black.png" : "/search.png"}
+    alt="Search"
+    className="icon-img preserve-image"
+  />
+</button>
 
       {showBar && (
         <div className="search-bar-wrapper">
