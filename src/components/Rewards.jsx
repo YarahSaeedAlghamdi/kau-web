@@ -90,6 +90,7 @@ export default function Rewards() {
 <button className="arrow arrow-right" onClick={() => scrollByAmount(350)}>‹</button>
 
 
+
       <div className="rewards-carousel" ref={carouselRef}>
         <div className="reward-item">
           <div className="reward-icon">🏅</div>
