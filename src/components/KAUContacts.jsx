@@ -4,16 +4,16 @@ import "./KAUContacts.css";
 const KAUContacts = () => {
   return (
     <footer className="kau-social">
-      <div className="gallery-title">ابقى على تواصل </div>
+      <div className="gallery-title">موجودين وين ما تكون </div>
 
 
-      <div className="social-buttons">
-        <button>instagram</button>
-        <button>x</button>
-        <button>linkedin</button>
-        <button>MyKau</button>
-        <button>SnapChat</button>
-      </div>
+     <div className="d-flex justify-content-center flex-wrap gap-3 align-items-center social-names">
+  <span><i className="bi bi-snapchat"></i> SnapChat</span>
+  <span><i className="bi bi-globe"></i> MyKau</span>
+  <span><i className="bi bi-linkedin"></i> LinkedIn</span>
+  <span><i className="bi bi-twitter-x"></i> منصة  </span>
+  <span><i className="bi bi-instagram"></i> Instagram</span>
+</div>
 
 
 

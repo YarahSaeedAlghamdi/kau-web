@@ -13,22 +13,22 @@ function Achievements() {
       title: "تميّز عالمي بثقة وطنية",
       description: "تقدُّمنا في التصنيفات العالمية هو انعكاس لجودة الأداء الأكاديمي والبحثي، والالتزام المستمر بمعايير التميز والاعتماد المؤسسي.",
       button: "اكتشف المزيد",
-      image: "https://cmsplus.kau.edu.sa/Images/124/In_news/1446/25-6-2025-inner.jpg",
+      image: "https://www.kau.edu.sa/Images/0/img/map_01_ar.png",
       link: "#"
     },
     {
       title: "بحث يقود المستقبل",
       description: "نقود مسيرة الابتكار من خلال دعم البحوث النوعية، وتمكين الباحثين، وتوفير بيئة محفزة لإنتاج المعرفة وتحقيق أثر علمي ومجتمعي مستدام.",
       button: "اعرف المزيد",
-      image: "https://th.bing.com/th/id/OIP.2iYPw4mQXpCvtvb2CnsaZQHaDt?w=295&h=175&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3.jpeg",
-      link: "#"
+      image: "https://cmsplus.kau.edu.sa/Images/124/In_news/1446/25-6-2025-inner.jpg",
+      link: "https://www.kau.edu.sa/Content-0-AR-285333"
     },
     {
       title: "نحو تعليم يصنع الفرق",
       description: "نُعزز التميز في بيئة تعليمية تفاعلية تُمكّن الطلاب من اكتساب المعرفة، وتنمية المهارات، والاستعداد لريادة المستقبل بثقة وكفاءة.",
       button: "تعرف أكثر",
-      image: "https://cmsplus.kau.edu.sa/Images/124/In_news/1446/22-6-2025-inner3.jpg",
-      link: "#"
+      image: "https://kau.edu.sa/Images/838/news/news183.jpg",
+      link: "https://vp-academic-affairs.kau.edu.sa/Default-838-ARhttps://www.kau.edu.sa/Home.aspx"
     }
   ];
 

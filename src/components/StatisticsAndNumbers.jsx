@@ -76,12 +76,12 @@ export default function StatisticsAndNumbers() {
         {showStats && (
           <>
             <text
-              x={baseX - 430}
+              x={baseX - 400}
               y={baseY + 5}
               className="stats-title"
               textAnchor="end"
             >
-              احصائيات وارقام
+              أرقام تُميزنا
             </text>
 
             <line
