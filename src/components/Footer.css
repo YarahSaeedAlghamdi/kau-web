@@ -20,7 +20,7 @@
   align-items: flex-start; /* محاذاة العناصر من الأعلى */
   flex-wrap: wrap; /* السماح بلف العناصر عند الحاجة */
   flex-direction: row-reverse; /* ترتيب العناصر من اليمين لليسار */
-  gap: 2rem; /* مسافة بين العناصر */
+  gap: rem; /* مسافة بين العناصر */
 }
 
 /* صندوق الاشتراك */
@@ -34,6 +34,7 @@
   flex-direction: column; /* ترتيب عمودي */
   align-items: center; /* تمركز العناصر أفقياً */
   text-align: center; /* محاذاة النص في الوسط */
+
 }
 
 /* تأثير عند تمرير الفأرة على الاشتراك */
@@ -54,6 +55,7 @@
   border: none; /* إزالة حدود الصندوق */
   width: 70%; /* عرض نسبي */
   max-width: 100%; /* الحد الأقصى للعرض */
+
 }
 
 /* صف الاتصال (مثلاً أيقونة ونص) */
@@ -156,6 +158,7 @@
   align-items: center; /* محاذاة وسط عمودي */
   gap: 8px; /* مسافة بين النص والسهم */
   transition: background-color 0.3s ease;
+  margin-top: 0.5rem; /* ✅ إضافة لإنزال الزر للأسفل */
 }
 
 .subscribe button:hover {
