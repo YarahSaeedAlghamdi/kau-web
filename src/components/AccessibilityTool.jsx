@@ -23,7 +23,14 @@ const AccessibilityTools = () => {
     'font-md': 'متوسط',
     'font-xl': 'كبير',
   };
-  const fontFamilies = ['font-tajawal', 'font-dyslexic', 'font-hyperlegible'];
+
+  const fontFamilies = ['font-arial', 'font-verdana', 'font-tahoma'];
+  const fontLabelsMap = {
+    'font-arial': 'Arial',
+    'font-verdana': 'Verdana',
+    'font-tahoma': 'Tahoma',
+  };
+
   const saturationLevels = ['low', 'medium', 'high'];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +58,7 @@ const AccessibilityTools = () => {
   }, [fontSizeIndex]);
 
   useEffect(() => {
-    document.body.classList.remove('font-tajawal', 'font-dyslexic', 'font-hyperlegible');
+    document.body.classList.remove('font-arial', 'font-verdana', 'font-tahoma');
     if (document.body.classList.contains('apply-accessibility')) {
       document.body.classList.add(fontFamilies[fontFamilyIndex]);
     }
@@ -97,10 +104,10 @@ const AccessibilityTools = () => {
   };
 
   const toggleCursor = () => setCursorLarge(prev => !prev);
-  const toggleHighlight = () =>{
-      ensureAccessibilityClass();
-      setHighlightLinks(prev => !prev);
-  }
+  const toggleHighlight = () => {
+    ensureAccessibilityClass();
+    setHighlightLinks(prev => !prev);
+  };
 
   const toggleImages = () => setHideImages(prev => !prev);
   const toggleFlip = (cardId) => setFlippedCard(prev => (prev === cardId ? null : cardId));
@@ -125,7 +132,7 @@ const AccessibilityTools = () => {
     document.body.classList.remove(
       'font-xs', 'font-md', 'font-xl',
       'highlight-links',
-      'font-tajawal', 'font-dyslexic', 'font-hyperlegible',
+      'font-arial', 'font-verdana', 'font-tahoma',
       'saturation-low', 'saturation-high',
       'apply-accessibility'
     );
@@ -153,7 +160,7 @@ const AccessibilityTools = () => {
         </button>
         <div className={`mode-buttons-wrapper ${isOpen ? 'open' : ''}`}>
           <button className="mode-button" title="ضعف البصر"><img src={visionIcon} alt="ضعف البصر" /></button>
-          <button className="mode-button" title="عمى الألون"><img src={autismIcon} alt="عمى الألوان" /></button>
+          <button className="mode-button" title="عمى الألوان"><img src={autismIcon} alt="عمى الألوان" /></button>
           <button className="mode-button" title="الإعاقة الحركية"><img src={mobilityIcon} alt="الإعاقة الحركية" /></button>
           <button className="mode-button" title="عسر القراءة"><img src={dyslexiaIcon} alt="عسر القراءة" /></button>
           <button className="mode-button" title="فرط الحركة"><img src={adhdIcon} alt="فرط الحركة" /></button>
@@ -174,8 +181,11 @@ const AccessibilityTools = () => {
                 <div className="card-back">
                   {tool.id === "fontType" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); cycleFontFamily(); }}>
-                        {fontFamilies[fontFamilyIndex].replace('font-', '')}
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        cycleFontFamily();
+                      }}>
+                        {fontLabelsMap[fontFamilies[fontFamilyIndex]]}
                       </button>
                     </div>
                   )}
@@ -189,28 +199,36 @@ const AccessibilityTools = () => {
                       </button>
                     </div>
                   )}
-
                   {tool.id === "colorContrast" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); cycleSaturation(); }}>
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        cycleSaturation();
+                      }}>
                         {saturationLevels[saturationIndex] === 'low'
                           ? 'منخفض'
                           : saturationLevels[saturationIndex] === 'medium'
-                          ? 'عادي'
-                          : 'عالي'}
+                            ? 'عادي'
+                            : 'عالي'}
                       </button>
                     </div>
                   )}
                   {tool.id === "cursorSize" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); toggleCursor(); }}>
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        toggleCursor();
+                      }}>
                         {cursorLarge ? 'عادي' : 'كبير'}
                       </button>
                     </div>
                   )}
                   {tool.id === "linkHighlight" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); toggleHighlight(); }}>
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        toggleHighlight();
+                      }}>
                         {highlightLinks ? 'إيقاف' : 'تشغيل'}
                       </button>
                     </div>
@@ -222,14 +240,22 @@ const AccessibilityTools = () => {
                   )}
                   {tool.id === "hideImages" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); toggleImages(); }}>
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        toggleImages();
+                      }}>
                         {hideImages ? "إظهار" : "إخفاء"}
                       </button>
                     </div>
                   )}
                   {tool.id === "resetAll" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); resetAll(); }}>إعادة تعيين</button>
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        resetAll();
+                      }}>
+                        إعادة تعيين
+                      </button>
                     </div>
                   )}
                 </div>

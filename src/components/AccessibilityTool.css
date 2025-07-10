@@ -232,3 +232,14 @@
   margin-bottom: 6px;
   object-fit: contain;
 }
+.font-arial {
+  font-family: Arial, sans-serif !important;
+}
+
+.font-verdana {
+  font-family: Verdana, sans-serif !important;
+}
+
+.font-tahoma {
+  font-family: Tahoma, sans-serif !important;
+}
