@@ -98,7 +98,7 @@ const AccessibilityTools = () => {
 
   const toggleCursor = () => setCursorLarge(prev => !prev);
   const toggleHighlight = () =>{
-      ensureAccessibilityClass(); // ✅ ضروري
+      ensureAccessibilityClass();
       setHighlightLinks(prev => !prev);
   }
 
@@ -124,7 +124,7 @@ const AccessibilityTools = () => {
 
     document.body.classList.remove(
       'font-xs', 'font-md', 'font-xl',
-      'highlight-links', // ✅ الصحيح
+      'highlight-links',
       'font-tajawal', 'font-dyslexic', 'font-hyperlegible',
       'saturation-low', 'saturation-high',
       'apply-accessibility'
@@ -181,11 +181,15 @@ const AccessibilityTools = () => {
                   )}
                   {tool.id === "fontSize" && (
                     <div className="font-buttons-wrapper">
-                      <button onClick={(e) => { e.stopPropagation(); cycleFontSize(); }}>
-                        {fontLabels[fontSizes[fontSizeIndex]]}
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        cycleFontSize();
+                      }}>
+                        {fontLabels[fontSizes[(fontSizeIndex + 1) % fontSizes.length]]}
                       </button>
                     </div>
                   )}
+
                   {tool.id === "colorContrast" && (
                     <div className="font-buttons-wrapper">
                       <button onClick={(e) => { e.stopPropagation(); cycleSaturation(); }}>
@@ -234,7 +238,6 @@ const AccessibilityTools = () => {
           ))}
         </div>
       </div>
-
     </div>
   );
 };
